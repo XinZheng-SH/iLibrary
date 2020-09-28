@@ -12,6 +12,8 @@ php: 5.6+
 
 CI:本项目部署在CI3，点击[这里](https://codeigniter.com/download)
 
+bootstrap:4.5.2,已部署进对应的文件夹，下载到本地即可
+
 项目路径
 
 Project
