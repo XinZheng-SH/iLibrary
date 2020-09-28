@@ -8,9 +8,9 @@
 
 本机测试可使用mySQL5，点击[这里下载](https://dev.mysql.com/downloads/mysql/5.7.html)
 
-php:
+php: 5.6+
 
-CI:本项目部署在4.0.4，本机测试可自行选择，点击[这里](https://codeigniter.com/)
+CI:本项目部署在CI3，点击[这里](https://codeigniter.com/download)
 
 项目路径
 
