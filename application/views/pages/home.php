@@ -1,3 +1,8 @@
+<head>
+	<link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../assets/css/style.css"
+</head>
+
 <div class="banner">
 </div>
 
