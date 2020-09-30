@@ -51,7 +51,6 @@
 
   <body>
     <div><h1>bookshelf</h1></div>
-    CNM
     <div id="bookshelfContainer">
       <div id="bookContainer1">
         <div id="book">
