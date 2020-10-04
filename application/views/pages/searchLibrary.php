@@ -1,11 +1,10 @@
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-
-<script type="text/javascript">
-	setTimeout(function (){
-		$('#disappear_div').remove();
-		$('#appear_div').css("visibility", "visible");
-	},3000)
-</script>
+<!--<script type="text/javascript">-->
+<!--	setTimeout(function (){-->
+<!--		$('#disappear_div').remove();-->
+<!--		$('#appear_div').css("visibility", "visible");-->
+<!--	},3000)-->
+<!--</script>-->
 
 <div class="container-fluid">
 <div class="row" style="margin-top: 5em;">
@@ -55,9 +54,11 @@
 <!--				});-->
 <!--			</script>-->
 			<input type="checkbox" id="track-position" name="track" onclick="getLocation()">
-			<label for="vehicle1"> Current Location </label><br>
 			<p id="result"></p>
 			<script>
+
+				var latitude;
+				var longitude;
 
 				var result = document.getElementById("result");
 
@@ -65,6 +66,7 @@
 					if (navigator.geolocation) {
 						navigator.geolocation.watchPosition(showPosition, null, { enableHighAccuracy: true });
 
+						// refreshMap(latitude,longitude);
 					} else {
 						x.innerHTML = "Geolocation is not supported by this browser.";
 					}
@@ -78,6 +80,10 @@
 						"<br>altitude accuracy: " + position.coords.altitudeAccuracy + " [m]" +
 						"<br>heading: " + position.coords.heading + " [degrees]" +
 						"<br>speed: " + position.coords.speed + " [m/s]";
+					latitude = position.coords.latitude;
+					longitude = position.coords.longitude;
+					refreshMap(longitude,latitude);
+
 				}
 
 			</script>

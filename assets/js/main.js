@@ -1,9 +1,26 @@
+var coor = [17039348.214874785,-3191341.334648482]
+
 window.onload = init;
+
+
+var degrees2meters = function(lon,lat) {
+	var x = lon * 20037508.34 / 180;
+	var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
+	y = y * 20037508.34 / 180;
+	return [x, y]
+}
+
+function refreshMap(longtitude,latitude){
+	coor = degrees2meters(longtitude,latitude);
+	console.log(coor);
+	$("#map").empty();
+	init();
+}
 
 function init() {
 	const map = new ol.Map({
 		view: new ol.View({
-			center: [17033843.694390804, -3185258.981194314],
+			center: coor,
 			zoom: 13,
 			maxZoom: 15,
 			minZoom: 12,
