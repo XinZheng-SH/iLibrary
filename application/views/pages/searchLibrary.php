@@ -37,7 +37,9 @@
 		Results
 		<hr/>
 		<div class="mx-auto" id="radar">
-			<div id="map" class="map"></div>
+			<div id="map" class="map">
+				<div id="popup"></div>
+			</div>
 
 <!--			<script type="text/javascript">-->
 <!--				var map = new ol.Map({-->
@@ -55,8 +57,9 @@
 <!--			</script>-->
 			<input type="checkbox" id="track-position" name="track" onclick="getLocation()">
 			<p id="result"></p>
-			<script>
 
+			<script>
+				// init();
 				var latitude;
 				var longitude;
 
@@ -74,15 +77,14 @@
 
 				function showPosition(position) {
 					result.innerHTML = "latitude: " + position.coords.latitude +
-						"<br>longitude: " + position.coords.longitude +
-						"<br>position accuracy: " + position.coords.accuracy + " [m]" +
-						"<br>altitude: " + position.coords.altitude + " [m]" +
-						"<br>altitude accuracy: " + position.coords.altitudeAccuracy + " [m]" +
-						"<br>heading: " + position.coords.heading + " [degrees]" +
-						"<br>speed: " + position.coords.speed + " [m/s]";
+							"<br>longitude: " + position.coords.longitude +
+							"<br>position accuracy: " + position.coords.accuracy + " [m]" +
+							"<br>altitude: " + position.coords.altitude + " [m]" +
+							"<br>altitude accuracy: " + position.coords.altitudeAccuracy + " [m]" +
+							"<br>heading: " + position.coords.heading + " [degrees]" +
+							"<br>speed: " + position.coords.speed + " [m/s]";
 					latitude = position.coords.latitude;
 					longitude = position.coords.longitude;
-					refreshMap(longitude,latitude);
 
 				}
 
