@@ -56,7 +56,20 @@
 <!--				});-->
 <!--			</script>-->
 			<input type="checkbox" id="track-position" name="track" onclick="getLocation()">
+			<label for="track-position" > Locate to current position</label><br>
 			<p id="result"></p>
+
+			<?php echo dd($position) ?>
+			<?php foreach($position as $row) {?>
+
+				<?php
+					echo $Latitude = $row["Latitude"]; ?>
+
+				<?php
+					echo $Longitude = $row["Longitude"];
+				?>
+
+			<?php } ?>
 
 			<script>
 				// init();
@@ -75,17 +88,33 @@
 					}
 				}
 
+				var library = new ol.Feature({
+					geometry: new ol.geom.Point(ol.proj.transform(["<?php echo $Longitude ?>","<?php echo $Latitude?>"], 'EPSG:4326', 'EPSG:3857')),
+					name: "library",
+					population: 4000,
+					rainfall: 500,
+				});
+				// Retrieve all library positions
+				// function libraryMarker(longitude, latitude) {
+				// 	const library = new ol.Feature({
+				// 		geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude], 'EPSG:4326', 'EPSG:3857')),
+				// 		name: 'TooWong',
+				// 		population: 4000,
+				// 		rainfall: 500,
+				// 	});
+				// 	return library;
+				// }
+
 				function showPosition(position) {
 					result.innerHTML = "latitude: " + position.coords.latitude +
 							"<br>longitude: " + position.coords.longitude +
-							"<br>position accuracy: " + position.coords.accuracy + " [m]" +
-							"<br>altitude: " + position.coords.altitude + " [m]" +
-							"<br>altitude accuracy: " + position.coords.altitudeAccuracy + " [m]" +
-							"<br>heading: " + position.coords.heading + " [degrees]" +
-							"<br>speed: " + position.coords.speed + " [m/s]";
+							"<br>position accuracy: " + position.coords.accuracy + " [m]" ;
+							// "<br>altitude: " + position.coords.altitude + " [m]" +
+							// "<br>altitude accuracy: " + position.coords.altitudeAccuracy + " [m]" +
+							// "<br>heading: " + position.coords.heading + " [degrees]" +
+							// "<br>speed: " + position.coords.speed + " [m/s]";
 					latitude = position.coords.latitude;
 					longitude = position.coords.longitude;
-
 				}
 
 			</script>

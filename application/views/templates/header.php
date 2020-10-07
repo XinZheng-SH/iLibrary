@@ -34,6 +34,10 @@
 				<!--					Button trigger for radar -->
 					<button type="button" class="btn btn-success" >Radar</button>
 				</a>
+				<a href="<?php echo base_url('Radar/test') ?>">
+					<!--					Button trigger for radar -->
+					<button type="button" class="btn btn-success" >Test</button>
+				</a>
 
 		</nav>
 	</header>

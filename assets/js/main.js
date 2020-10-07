@@ -60,6 +60,7 @@ var iconStyle = new ol.style.Style({
 	}),
 });
 
+
 iconFeature.setStyle(iconStyle);
 gabba.setStyle(iconStyle);
 toowong.setStyle(iconStyle);
@@ -67,7 +68,7 @@ toowong.setStyle(iconStyle);
 var vectorSource = new ol.source.Vector({
 });
 
-vectorSource.addFeatures([iconFeature,gabba,toowong])
+vectorSource.addFeatures([iconFeature,gabba,toowong,library]);
 
 var vectorLayer = new ol.layer.Vector({
 	source: vectorSource,
@@ -112,7 +113,7 @@ var degrees2meters = function(lon,lat) {
 	var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
 	y = y * 20037508.34 / 180;
 	return [x, y]
-}
+};
 
 function refreshMap(longitude,latitude){
 
@@ -124,10 +125,6 @@ function refreshMap(longitude,latitude){
 }
 
 $("#track-position").click(()=>getLocation())
-
-
-
-
 
 var element = document.getElementById('popup');
 
