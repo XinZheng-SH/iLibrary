@@ -58,26 +58,17 @@
 			<input type="checkbox" id="track-position" name="track" onclick="getLocation()">
 			<label for="track-position" > Locate to current position</label><br>
 			<p id="result"></p>
+<!--			<script src="--><?php //echo base_url('assets/js/main.js') ?><!--" type="module"></script>-->
 
-			<?php echo dd($position) ?>
-			<?php foreach($position as $row) {?>
-
-				<?php
-					echo $Latitude = $row["Latitude"]; ?>
-
-				<?php
-					echo $Longitude = $row["Longitude"];
-				?>
-
-			<?php } ?>
 
 			<script>
+				// testJS();
 				// init();
 				var latitude;
 				var longitude;
 
-				var result = document.getElementById("result");
 
+				var result = document.getElementById("result");
 				function getLocation() {
 					if (navigator.geolocation) {
 						navigator.geolocation.watchPosition(showPosition, null, { enableHighAccuracy: true });
@@ -88,22 +79,7 @@
 					}
 				}
 
-				var library = new ol.Feature({
-					geometry: new ol.geom.Point(ol.proj.transform(["<?php echo $Longitude ?>","<?php echo $Latitude?>"], 'EPSG:4326', 'EPSG:3857')),
-					name: "library",
-					population: 4000,
-					rainfall: 500,
-				});
-				// Retrieve all library positions
-				// function libraryMarker(longitude, latitude) {
-				// 	const library = new ol.Feature({
-				// 		geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude], 'EPSG:4326', 'EPSG:3857')),
-				// 		name: 'TooWong',
-				// 		population: 4000,
-				// 		rainfall: 500,
-				// 	});
-				// 	return library;
-				// }
+
 
 				function showPosition(position) {
 					result.innerHTML = "latitude: " + position.coords.latitude +
@@ -118,41 +94,205 @@
 				}
 
 			</script>
+			<script>
+				var coor = [17039348.214874785,-3191341.334648482]
+
+				//UQ
+				var iconFeature = new ol.Feature({
+					geometry: new ol.geom.Point(ol.proj.transform([153,-27.5], 'EPSG:4326', 'EPSG:3857')),
+					name: 'UQ',
+					population: 4000,
+					rainfall: 500,
+				});
+
+				var hospital = new ol.Feature({
+					geometry: new ol.geom.Point(ol.proj.transform([153.0177771,-27.4965477], 'EPSG:4326', 'EPSG:3857')),
+					name: 'UUQ',
+					population: 4000,
+					rainfall: 500,
+				});
+
+				var gabba = new ol.Feature({
+					geometry: new ol.geom.Point(ol.proj.transform([153.028849,-27.4928212], 'EPSG:4326', 'EPSG:3857')),
+					name: 'Gabba',
+					population: 4000,
+					rainfall: 500,
+				});
+
+				var toowong = new ol.Feature({
+					geometry: new ol.geom.Point(ol.proj.transform([152.9872332,-27.4911051], 'EPSG:4326', 'EPSG:3857')),
+					name: 'TooWong',
+					population: 4000,
+					rainfall: 500,
+				});
+
+				var iconStyle = new ol.style.Style({
+					image: new ol.style.Icon({
+						anchor: [0.5, 46],
+						anchorXUnits: 'fraction',
+						anchorYUnits: 'pixels',
+						src: 'https://openlayers.org/en/v6.4.3/examples/data/icon.png',
+					}),
+				});
+
+				var markerArray = [];
+
+				function addMarker(longitude,latitude,id){
+					var newMarker = new ol.Feature({
+						geometry: new ol.geom.Point(ol.proj.transform([longitude,latitude], 'EPSG:4326', 'EPSG:3857')),
+						name: longitude,
+						population: 4000,
+						rainfall: 500,
+						id:id
+					});
+					newMarker.setStyle(iconStyle);
+					markerArray.push(newMarker);
+
+				}
+
+				iconFeature.setStyle(iconStyle);
+				hospital.setStyle(iconStyle);
+				gabba.setStyle(iconStyle);
+				toowong.setStyle(iconStyle);
+
+				// markerArray.push(iconFeature);
+				// markerArray.push(hospital);
+				// markerArray.push(gabba);
+				// markerArray.push(toowong);
+				console.log("markerArray"+ markerArray)
+
+				var vectorSource = new ol.source.Vector({
+				});
+
+				// vectorSource.addFeatures(markerArray);
+
+				var vectorLayer = new ol.layer.Vector({
+					source: vectorSource,
+				});
+
+				var rasterLayer = new ol.layer.Tile({
+					source: new ol.source.OSM()
+				});
+
+				let myMap = new ol.Map({
+					view: new ol.View({
+						center: coor,
+						zoom: 13,
+						maxZoom: 15,
+						minZoom: 12,
+						rotation: 0.5,
+					}),
+					layers: [rasterLayer, vectorLayer],
+					target: 'map'})
+
+
+				function init() {
+					map = myMap;
+				}
+
+				function getLocation() {
+					if (navigator.geolocation) {
+						var out = navigator.geolocation.getCurrentPosition(showPosition);
+					} else {
+						x.innerHTML = "Geolocation is not supported by this browser.";
+					}
+				}
+
+				function showPosition(position) {
+					var currentLatitude = position.coords.latitude;
+					var currentLongitude = position.coords.longitude;
+					refreshMap(currentLongitude,currentLatitude)
+				}
+
+				var degrees2meters = function(lon,lat) {
+					var x = lon * 20037508.34 / 180;
+					var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
+					y = y * 20037508.34 / 180;
+					return [x, y]
+				};
+
+				function refreshMap(longitude,latitude){
+
+					coor = degrees2meters(longitude,latitude);
+					console.log(coor);
+					myMap.getView().setCenter(coor);
+				}
+
+				$("#track-position").click(()=>getLocation())
+
+				function finalRefersh(){
+					$("#map").empty();
+					vectorSource.addFeatures(markerArray);
+					myMap = new ol.Map({
+						view: new ol.View({
+							center: coor,
+							zoom: 13,
+							maxZoom: 15,
+							minZoom: 12,
+							rotation: 0.5,
+						}),
+						layers: [rasterLayer, vectorLayer],
+						target: 'map'})
+
+					var element = document.getElementById('popup');
+
+					var popup = new ol.Overlay({
+						element: element,
+						positioning: 'bottom-center',
+						stopEvent: false,
+						offset: [0, -50],
+					});
+					// display popup on click
+					// BUG HERE
+					myMap.on('click', function (evt) {
+						var feature = myMap.forEachFeatureAtPixel(evt.pixel, function (feature) {
+							return feature;
+						});
+						if (feature) {
+							var coordinates = feature.getGeometry().getCoordinates();
+							popup.setPosition(coordinates);
+							var icon_id = feature.get('id');
+							$(element).popover('show');
+						} else {
+							$(element).popover('dispose');
+						}
+					});
+
+					// change mouse cursor when over marker
+					myMap.on('pointermove', function (e) {
+						if (e.dragging) {
+							$(element).popover('dispose');
+							return;
+						}
+						var pixel = myMap.getEventPixel(e.originalEvent);
+						var hit = myMap.hasFeatureAtPixel(pixel);
+						// myMap.getTarget().style.cursor = hit ? 'pointer' : '';
+						document.getElementById(myMap.getTarget()).style.cursor = hit ? 'pointer' : '';
+					});
+					myMap.addOverlay(popup);
+				}
+			</script>
+			<!--			--><?php //echo dd($position) ?>
+			<?php foreach($position as $row) {?>
+
+				<?php
+				echo $Latitude = $row["Latitude"]; ?>
+
+				<?php
+				echo $Longitude = $row["Longitude"];
+				?>
+				<script>
+					console.log((<?php echo $Latitude ?>))
+					addMarker(<?php echo $Longitude ?>,<?php echo $Latitude ?>);
+				</script>
+
+			<?php } ?>
+			<script>
+
+				finalRefersh();
+			</script>
 		</div>
 	</div>
 </div>
 </div>
-
-<!--	<div class="row" id="disappear_div" style="margin-top: 5rem">-->
-<!--		<img class='col-lg-4 offset-4 disappear' src="--><?php //echo base_url('assets/images/searching_rader.gif') ?><!--" alt="searching_rader">-->
-<!--	</div>-->
-<!--	<div class="" id="appear_div" style="visibility: hidden;height: 100%;" >-->
-<!--		<div class="row align-items-center" style="height: 100%;margin: 1px">-->
-<!--			<div class="col-4" style="height: 100%;padding: 0">-->
-<!--				<div class="h-25" style="background-color: red;" >-->
-<!--					first panel-->
-<!--				</div>-->
-<!--				<div class="h-25" style="background-color: green">-->
-<!--					.. panel-->
-<!--				</div>-->
-<!--				<div class="h-25" style="background-color: yellow">-->
-<!--					.. panel-->
-<!--				</div>-->
-<!--				<div class="h-25" style="background-color: blue">-->
-<!--					.. panel-->
-<!--				</div>-->
-<!--			</div>-->
-<!--			<div class="col-8" style="height: 100%;padding-left: 5px;padding-right: 0">-->
-<!--				<div class="h-25 w-75 offset-1  d-flex justify-content-center">-->
-<!--					<input type="text" class="form-control"-->
-<!--						   placeholder="666 Rd, St.Lucia" name="postcode" disabled="disabled"-->
-<!--						   style="border-radius: 15px;margin-top: 10%"-->
-<!--					/>-->
-<!--				</div>-->
-<!--				<div class="h-100 w-100">-->
-<!--					<img src="--><?php //echo base_url('assets/images/test_rader_results.jpg') ?><!--" style="width: 95%;">-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
 
