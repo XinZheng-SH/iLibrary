@@ -8,7 +8,7 @@ class Pages extends CI_Controller{
 ////		$this->load->model('Page_model');
 //	}
 
-	public function view($page = 'home'){
+	public function view($page = 'homepage'){
 
 		if(!file_exists(APPPATH.'views/pages/'.$page.'.php')){
 			show_404();
