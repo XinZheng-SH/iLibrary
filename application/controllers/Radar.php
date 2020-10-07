@@ -18,6 +18,12 @@ class Radar extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function getData() {
+		$library_id = $this->input->post('icon_id');
+		$result = $this->Radar_modal->get_data($library_id);
+		echo json_encode($result);
+	}
+
 	public function test() {
 		$this->load->view('templates/header');
 		$this->load->view('pages/test');

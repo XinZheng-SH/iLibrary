@@ -15,13 +15,26 @@
 				<li class="list-group-item" style="justify-content: center;">
 					<div class="card" style="width: 100%;">
 						<div class="card" style="width: 100%;">
-							<img class="card-img-top" src="<?php echo base_url('assets/images/library_test.jpg') ?>" alt="Card image cap">
+							<div id="library-img">
+							</div>
 							<div class="card-body">
-								<h5 class="card-title" style="font-size: 1em; font-style: italic; font-weight: bold;">Central library</h5>
+								<h5 class="card-title" style="font-size: 1em; font-style: italic; font-weight: bold;">
+									<span id="library-name"></span>
+								</h5>
 							</div>
 							<ul class="list-group list-group-flush">
-								<li class="list-group-item">Open Hour:</li>
-								<li class="list-group-item">Wifi Available:</li>
+								<li class="list-group-item">Open Hour:
+									<span id="library-hour"></span>
+								</li>
+								<li class="list-group-item">Wifi Available:
+									<span id="library-Wifi"></span>
+								</li>
+								<li class="list-group-item">Phone:
+									<span id="library-phone"></span>
+								</li>
+								<li class="list-group-item">Email:
+									<span id="library-email"></span>
+								</li>
 							</ul>
 							<div class="card-body">
 								<a href="#" class="card-link">Popular book</a>
@@ -34,7 +47,7 @@
 		</div>
 	</div>
 	<div class="col-sm-9 container" id="radar-block">
-		Results
+		Results:
 		<hr/>
 		<div class="mx-auto" id="radar">
 			<div id="map" class="map">
@@ -56,7 +69,7 @@
 <!--				});-->
 <!--			</script>-->
 			<input type="checkbox" id="track-position" name="track" onclick="getLocation()">
-			<label for="track-position" > Locate to current position</label><br>
+			<label for="track-position">Locate to current position</label><br>
 			<p id="result"></p>
 <!--			<script src="--><?php //echo base_url('assets/js/main.js') ?><!--" type="module"></script>-->
 
@@ -67,6 +80,8 @@
 				var latitude;
 				var longitude;
 
+				// hide element
+				document.getElementById('side-bar').style.display='none';
 
 				var result = document.getElementById("result");
 				function getLocation() {
@@ -84,7 +99,7 @@
 				function showPosition(position) {
 					result.innerHTML = "latitude: " + position.coords.latitude +
 							"<br>longitude: " + position.coords.longitude +
-							"<br>position accuracy: " + position.coords.accuracy + " [m]" ;
+							"<br>position accuracy: " + position.coords.accuracy + "[m]" ;
 							// "<br>altitude: " + position.coords.altitude + " [m]" +
 							// "<br>altitude accuracy: " + position.coords.altitudeAccuracy + " [m]" +
 							// "<br>heading: " + position.coords.heading + " [degrees]" +
@@ -95,7 +110,7 @@
 
 			</script>
 			<script>
-				var coor = [17039348.214874785,-3191341.334648482]
+				var coor = [17039348.214874785,-3191341.334648482];
 
 				//UQ
 				var iconFeature = new ol.Feature({
@@ -183,7 +198,7 @@
 						rotation: 0.5,
 					}),
 					layers: [rasterLayer, vectorLayer],
-					target: 'map'})
+					target: 'map'});
 
 
 				function init() {
@@ -232,7 +247,7 @@
 							rotation: 0.5,
 						}),
 						layers: [rasterLayer, vectorLayer],
-						target: 'map'})
+						target: 'map'});
 
 					var element = document.getElementById('popup');
 
@@ -251,8 +266,14 @@
 						if (feature) {
 							var coordinates = feature.getGeometry().getCoordinates();
 							popup.setPosition(coordinates);
+
+							// display js element
+							document.getElementById('side-bar').style.display='block';
+
 							var icon_id = feature.get('id');
+							// console.log(icon_id);
 							$(element).popover('show');
+							library_detail(icon_id);
 						} else {
 							$(element).popover('dispose');
 						}
@@ -272,7 +293,7 @@
 					myMap.addOverlay(popup);
 				}
 			</script>
-			<!--			--><?php //echo dd($position) ?>
+
 			<?php foreach($position as $row) {?>
 
 				<?php
@@ -280,16 +301,39 @@
 
 				<?php
 				echo $Longitude = $row["Longitude"];
+				$id = $row["id"];
 				?>
 				<script>
-					console.log((<?php echo $Latitude ?>))
-					addMarker(<?php echo $Longitude ?>,<?php echo $Latitude ?>);
+					//console.log((<?php //echo $Latitude ?>//));
+					addMarker(<?php echo $Longitude ?>,<?php echo $Latitude ?>,<?php echo $id ?>);
 				</script>
 
 			<?php } ?>
 			<script>
 
 				finalRefersh();
+			</script>
+			<script type="text/javascript">
+				// ajax call data from database for library detailed information
+				function library_detail(icon_id) {
+					console.log(icon_id);
+					$.ajax({
+						url: '<?php echo base_url()?>Radar/getData',
+						method: 'post',
+						data: {icon_id: icon_id},
+						dataType: 'json',
+						success: function (response) {
+							$('#library-name').text(response.Branch_Name);
+							$('#library-hour').text(response.Opening_Hours_Wednesday);
+							$('#library-Wifi').text(response.WiFi_Availability);
+							$('#library-phone').text(response.Phone);
+							$('#library-email').text(response.Email);
+
+							$('#library-img').html('<img class="card-img-top" src="http://localhost/iLibraryGit/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
+							console.log(response);
+						}
+					})
+				}
 			</script>
 		</div>
 	</div>

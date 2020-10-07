@@ -10,9 +10,16 @@ class Radar_modal extends CI_Model
 	}
 
 	function get_position() {
-		$this->db->select('Latitude, Longitude');
+		$this->db->select('id, Latitude, Longitude');
 		$this->db->from('library_data');
 		return $result = $this->db->get()->result_array();
+	}
+
+	function get_data($library_id) {
+		$this->db->select('*');
+		$this->db->from('library_data');
+		$this->db->where('id', $library_id);
+		return $this->db->get()->row();
 	}
 
 //	function get_latitude($id) {
