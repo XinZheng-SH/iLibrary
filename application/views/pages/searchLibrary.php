@@ -37,7 +37,7 @@
 								</li>
 							</ul>
 							<div class="card-body">
-								<a href="#" class="card-link">Popular book</a>
+								<a href="<?php echo base_url('Books/view') ?>" class="card-link">Popular book</a>
 								<a href="http://maps.google.co.uk/maps?q=central library" class="card-link">Google Map</a>
 							</div>
 						</div>
@@ -297,10 +297,10 @@
 			<?php foreach($position as $row) {?>
 
 				<?php
-				echo $Latitude = $row["Latitude"]; ?>
+				$Latitude = $row["Latitude"]; ?>
 
 				<?php
-				echo $Longitude = $row["Longitude"];
+				$Longitude = $row["Longitude"];
 				$id = $row["id"];
 				?>
 				<script>
@@ -330,7 +330,8 @@
 							$('#library-email').text(response.Email);
 
 							$('#library-img').html('<img class="card-img-top" src="http://localhost/iLibraryGit/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
-							console.log(response);
+							// value of Branch Name
+							return response.Branch_Name;
 						}
 					})
 				}

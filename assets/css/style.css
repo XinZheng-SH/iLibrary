@@ -227,3 +227,36 @@ body {
 }
 
 /*editor height*/
+
+/*record */
+.record {
+	border: 5px solid orange;
+	padding: 1em;
+	margin-top: 1em;
+}
+
+/*Google book*/
+#search{
+	width:300px;
+	height:150px;
+	margin:auto;
+	margin-top:20px;
+	padding:15px;
+}
+button{
+	position:relative;
+	left:50px;
+}
+.aligning{
+	margin-left:700px;
+	margin-top:20px;
+}
+#imagebutton{
+	position:relative;
+	left:-10px;
+	top:-8px;
+	margin-bottom:15px;
+}
+#result{
+	margin-top:50px;
+}
