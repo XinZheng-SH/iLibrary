@@ -10,6 +10,67 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
 <!--	<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>-->
+
+<style type="text/css">
+  #bookshelfContainer {
+  background-image: url(<?php echo base_url(); ?>/assets/images/bookshelf/bookshelf.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 900px;
+  height: 800px;
+  width: 1000px;
+  margin: auto;
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+
+#container{
+  width:100%;
+ height:100%;
+ display:block;
+ background-image: url(<?php echo base_url(); ?>/assets/images/bookshelf/background.jpg);
+ background-size:100%;
+ background-repeat:no-repeat;
+}
+
+#bookContainer1 {
+  height: 150px;
+  width: 800px;
+  position: relative;
+  left: 150px;
+  top: 140px;
+  display: flex;
+}
+
+#bookContainer2 {
+  height: 150px;
+  width: 800px;
+  position: relative;
+  left: 150px;
+  top: 200px;
+  display: flex;
+}
+
+#bookContainer3 {
+  height: 150px;
+  width: 800px;
+  position: relative;
+  left: 150px;
+  top: 260px;
+  display: flex;
+}
+
+#book {
+  width: 20%;
+  height: 100%;
+  background-color: cornsilk;
+  margin-right: 30px;
+}
+    </style>
+
 	<script src="<?php echo base_url('assets/js/jquery-3.5.1.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js') ?>" type="text/javascript"></script>
 	<script src="https://unpkg.com/@popperjs/core@2" type="text/javascript"></script>
