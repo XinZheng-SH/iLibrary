@@ -6,7 +6,7 @@ class Books extends CI_Controller
 	public function view() {
 
 		$this->load->view('templates/header');
-		$this->load->view('pages/bookshelf');
+		$this->load->view('pages/bookshelf1');
 		$this->load->view('templates/footer');
 	}
 }

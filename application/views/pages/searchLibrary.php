@@ -329,7 +329,7 @@
 							$('#library-phone').text(response.Phone);
 							$('#library-email').text(response.Email);
 
-							$('#library-img').html('<img class="card-img-top" src="http://localhost/iLibraryGit/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
+							$('#library-img').html('<img class="card-img-top" src="<?php echo base_url() ?>/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
 							// value of Branch Name
 							return response.Branch_Name;
 						}
