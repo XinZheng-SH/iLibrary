@@ -9,7 +9,6 @@
 		  href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
-<!--	<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>-->
 	<script src="<?php echo base_url('assets/js/jquery-3.5.1.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js') ?>" type="text/javascript"></script>
 	<script src="https://unpkg.com/@popperjs/core@2" type="text/javascript"></script>
@@ -20,34 +19,30 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-light bg-white">
-			<!--redirect back to default homepage-->
-			<a class="navbar-brand" href="<?php echo site_url()?>">
-			</a>
-			<div id="nav-search">
-				<form>
-					<div class="col-xs-8">
-						<div class="input-group">
-							<input class="form-control" type="search" placeholder="Search" aria-label="Search">
-							<span class="input-group-btn">
-									<button class="btn btn-danger" type="submit">
-										Search
-									</button>
-								</span>
-						</div>
-					</div>
-				</form>
-			</div>
+
+		<nav class="navbar navbar-light bg-white" style="justify-content: space-evenly;height: 80px">
+<!--			redirect back to default homepage-->
+			<a class="navbar-brand logo" href="<?php echo site_url()?>"></a>
 				<a href="<?php echo base_url('Radar/view') ?>">
-				<!--					Button trigger for radar -->
-					<button type="button" class="btn btn-success" >Radar</button>
-				</a>
-				<a href="<?php echo base_url('Radar/test') ?>">
-					<!--					Button trigger for radar -->
-					<button type="button" class="btn btn-success" >Test</button>
+<!--									Button trigger for radar-->
+					<button type="button" class="btn btn-success btnOnePointFive darkYellow"  >Radar</button>
 				</a>
 
+				<a href="<?php echo base_url('game/index') ?>">
+<!--										Button trigger for radar-->
+					<button type="button" class="btn btn-success btnOnePointFive"  >Game</button>
+				</a>
+			<a href="<?php echo base_url('Home/book') ?>">
+				<!--	Button for Book-->
+				<button type="button" class="btn btn-success btnOnePointFive" >Book</button>
+			</a>
+			<a href="<?php echo base_url('Home/book') ?>">
+				<!--	Button for About-->
+				<button type="button" class="btn btn-success btnOnePointFive" >About</button>
+			</a>
+
 		</nav>
+
 	</header>
 
 

@@ -39,8 +39,8 @@ body {
 }
 
 .navbar-brand {
-	height: 50px;
-	width:200px;
+	height: 80px;
+	width:80px;
 	background-image: url(../images/charac_logo.png);
 	background-size: 100% 100%;
 	background-position: center center;
@@ -48,8 +48,21 @@ body {
 	margin: 0;
 }
 
+.navbar a:first-child{
+	position: absolute;
+	left: 10px;
+}
+
 #nav-search {
 	width: 50%;
+}
+
+.btnOnePointFive {
+	width: 150%;
+}
+
+.darkYellow{
+	background-color: darkgoldenrod;
 }
 
 .banner {
