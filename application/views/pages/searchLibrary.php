@@ -54,21 +54,8 @@
 				<div id="popup"></div>
 			</div>
 
-<!--			<script type="text/javascript">-->
-<!--				var map = new ol.Map({-->
-<!--					target: 'map',-->
-<!--					layers: [-->
-<!--						new ol.layer.Tile({-->
-<!--							source: new ol.source.OSM()-->
-<!--						})-->
-<!--					],-->
-<!--					view: new ol.View({-->
-<!--						center: ol.proj.transform([-27, 80], 'EPSG:4326', 'EPSG:3857'),-->
-<!--						zoom: 8-->
-<!--					})-->
-<!--				});-->
-<!--			</script>-->
 			<input type="checkbox" id="track-position" name="track" onclick="getLocation()">
+
 			<label for="track-position">Locate to current position</label><br>
 			<p id="result"></p>
 <!--			<script src="--><?php //echo base_url('assets/js/main.js') ?><!--" type="module"></script>-->
@@ -329,7 +316,7 @@
 							$('#library-phone').text(response.Phone);
 							$('#library-email').text(response.Email);
 
-							$('#library-img').html('<img class="card-img-top" src="<?php echo base_url() ?>/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
+							$('#library-img').html('<img class="card-img-top" src="<?php echo base_url() ?>/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 100%;">');
 							// value of Branch Name
 							return response.Branch_Name;
 						}
