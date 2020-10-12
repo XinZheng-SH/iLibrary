@@ -65,7 +65,6 @@
 	#book {
 		width: 20%;
 		height: 100%;
-		background-color: cornsilk;
 		margin-right: 30px;
 	}
 
