@@ -20,25 +20,26 @@
 <body>
 	<header>
 
-		<nav class="navbar navbar-light bg-white" style="justify-content: space-evenly;height: 80px">
+		<nav class="navbar navbar-light" style="justify-content: space-evenly;height: 80px; background-color: rgba(0,0,0,0.66);"; >
 <!--			redirect back to default homepage-->
+
 			<a class="navbar-brand logo" href="<?php echo site_url()?>"></a>
 				<a href="<?php echo base_url('Radar/view') ?>">
 <!--									Button trigger for radar-->
-					<button type="button" class="btn btn-success btnOnePointFive darkYellow"  >Radar</button>
+					<button type="button" class="btn btn-outline-warning"  >Radar</button>
 				</a>
 
 				<a href="<?php echo base_url('game/index') ?>">
 <!--										Button trigger for radar-->
-					<button type="button" class="btn btn-success btnOnePointFive"  >Game</button>
+					<button type="button" class="btn btn-outline-warning"  >Game</button>
 				</a>
 			<a href="<?php echo base_url('Home/book') ?>">
 				<!--	Button for Book-->
-				<button type="button" class="btn btn-success btnOnePointFive" >Book</button>
+				<button type="button" class="btn btn-outline-warning" >Book</button>
 			</a>
 			<a href="<?php echo base_url('Home/book') ?>">
 				<!--	Button for About-->
-				<button type="button" class="btn btn-success btnOnePointFive" >About</button>
+				<button type="button" class="btn btn-outline-warning" >About</button>
 			</a>
 
 		</nav>
