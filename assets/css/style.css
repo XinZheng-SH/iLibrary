@@ -19,7 +19,7 @@ body {
 #radar {
 	height: 50rem;
 	width: 50rem;
-	/*margin-bottom: 2rem;*/
+	margin-bottom: 2rem;
 	/*border-style: solid;*/
 	/*border-color: red;*/
 	/*border-width: 2px;*/
@@ -34,7 +34,7 @@ body {
 	/*border-style: solid;*/
 	/*border-color: green;*/
 	/*border-radius: 100%;*/
-	height: 98%;
+	height: 100%;
 	width: 100%;
 }
 
