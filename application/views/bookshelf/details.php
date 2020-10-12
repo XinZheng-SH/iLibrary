@@ -1,0 +1,1 @@
+<?php echo base_url() ?>assets/img/gallery/gallery-1.jpg

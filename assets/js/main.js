@@ -1,183 +1,220 @@
-// var coor = [17039348.214874785,-3191341.334648482]
-//
-// // testJS = function (){
-// // 	alert(123)
-// // }
-// //
-// // function testJS(){
-// // 	alert(123)
-// // }
-// //
-//
-// //
-// // function init() {
-// // 	const map = new ol.Map({
-// // 		view: new ol.View({
-// // 			center: coor,
-// // 			zoom: 13,
-// // 			maxZoom: 15,
-// // 			minZoom: 12,
-// // 			rotation: 0.5,
-// // 		}),
-// // 		layers: [
-// // 			new ol.layer.Tile({
-// // 				source: new ol.source.OSM()
-// // 			})
-// // 		],
-// // 		target: 'map'
-// // 	});
-// //
-// // 	map.on('click', function(e){
-// // 		console.log(e.coordinate);
-// // 	})
-// // }
-// //
-// // function setCenter() {
-// //
-// // }
-//
-// //UQ
-// var iconFeature = new ol.Feature({
-// 	geometry: new ol.geom.Point(ol.proj.transform([153,-27.5], 'EPSG:4326', 'EPSG:3857')),
-// 	name: 'UQ',
-// 	population: 4000,
-// 	rainfall: 500,
-// });
-//
-// var gabba = new ol.Feature({
-// 	geometry: new ol.geom.Point(ol.proj.transform([153.028849,-27.4928212], 'EPSG:4326', 'EPSG:3857')),
-// 	name: 'Gabba',
-// 	population: 4000,
-// 	rainfall: 500,
-// });
-//
-// var toowong = new ol.Feature({
-// 	geometry: new ol.geom.Point(ol.proj.transform([152.9872332,-27.4911051], 'EPSG:4326', 'EPSG:3857')),
-// 	name: 'TooWong',
-// 	population: 4000,
-// 	rainfall: 500,
-// });
-//
-// var iconStyle = new ol.style.Style({
-// 	image: new ol.style.Icon({
-// 		anchor: [0.5, 46],
-// 		anchorXUnits: 'fraction',
-// 		anchorYUnits: 'pixels',
-// 		src: 'https://openlayers.org/en/v6.4.3/examples/data/icon.png',
-// 	}),
-// });
-//
-//
-// iconFeature.setStyle(iconStyle);
-// gabba.setStyle(iconStyle);
-// toowong.setStyle(iconStyle);
-//
-// var vectorSource = new ol.source.Vector({
-// });
-//
-// vectorSource.addFeatures([iconFeature,gabba,toowong]);
-//
-// var vectorLayer = new ol.layer.Vector({
-// 	source: vectorSource,
-// });
-//
-// var rasterLayer = new ol.layer.Tile({
-// 	source: new ol.source.OSM()
-// });
-//
-// const myMap = new ol.Map({
-// 	view: new ol.View({
-// 		center: coor,
-// 		zoom: 13,
-// 		maxZoom: 15,
-// 		minZoom: 12,
-// 		rotation: 0.5,
-// 	}),
-// 	layers: [rasterLayer, vectorLayer],
-// 	target: 'map'})
-//
-//
-// function init() {
-// 	map = myMap;
-// 	}
-//
-// function getLocation() {
-// 	if (navigator.geolocation) {
-// 		var out = navigator.geolocation.getCurrentPosition(showPosition);
-// 	} else {
-// 		x.innerHTML = "Geolocation is not supported by this browser.";
-// 	}
-// }
-//
-// function showPosition(position) {
-// 	var currentLatitude = position.coords.latitude;
-// 	var currentLongitude = position.coords.longitude;
-// 	refreshMap(currentLongitude,currentLatitude)
-// }
-//
-// var degrees2meters = function(lon,lat) {
-// 	var x = lon * 20037508.34 / 180;
-// 	var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
-// 	y = y * 20037508.34 / 180;
-// 	return [x, y]
-// };
-//
-// function refreshMap(longitude,latitude){
-//
-// 	coor = degrees2meters(longitude,latitude);
-// 	console.log(coor);
-// 	// $("#map").empty();
-// 	// init();
-// 	myMap.getView().setCenter(coor);
-// }
-//
-// $("#track-position").click(()=>getLocation())
-//
-// var element = document.getElementById('popup');
-//
-// var popup = new ol.Overlay({
-// 	element: element,
-// 	positioning: 'bottom-center',
-// 	stopEvent: false,
-// 	offset: [0, -50],
-// });
-//
-// myMap.addOverlay(popup);
-//
-// // display popup on click
-// //BUG HERE
-// // myMap.on('click', function (evt) {
-// // 	var feature = myMap.forEachFeatureAtPixel(evt.pixel, function (feature) {
-// // 		return feature;
-// // 	});
-// // 	// alert(feature.getGeometry().getCoordinates())
-// // 	if (feature) {
-// // 		var coordinates = feature.getGeometry().getCoordinates();
-// // 		popup.setPosition(coordinates);
-// // 		$(element).popover({
-// // 			placement: 'top',
-// // 			html: true,
-// // 			// content: "fuck you",
-// // 		});
-// // 		$(element).data().setContent("fuckyou");
-// // 		$(element).popover("show")}
-// // 	 else {
-// // 		$(element).popover('dispose');
-// // 	}
-//
-//
-// // });
-//
-// // change mouse cursor when over marker
-// myMap.on('pointermove', function (e) {
-// 	if (e.dragging) {
-// 		$(element).popover('dispose');
-// 		return;
-// 	}
-// 	var pixel = myMap.getEventPixel(e.originalEvent);
-// 	var hit = myMap.hasFeatureAtPixel(pixel);
-// 	document.getElementById(myMap.getTarget()).style.cursor = hit ? 'pointer' : '';
-// });
-//
-//
-//
+/**
+* Template Name: Restaurantly - v1.1.0
+* Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+!(function($) {
+  "use strict";
+
+  // Preloader
+  $(window).on('load', function() {
+    if ($('#preloader').length) {
+      $('#preloader').delay(100).fadeOut('slow', function() {
+        $(this).remove();
+      });
+    }
+  });
+
+  // Smooth scroll for the navigation menu and links with .scrollto classes
+  var scrolltoOffset = $('#header').outerHeight() - 1;
+  $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function(e) {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      if (target.length) {
+        e.preventDefault();
+
+        var scrollto = target.offset().top - scrolltoOffset;
+
+        if ($(this).attr("href") == '#header') {
+          scrollto = 0;
+        }
+
+        $('html, body').animate({
+          scrollTop: scrollto
+        }, 1500, 'easeInOutExpo');
+
+        if ($(this).parents('.nav-menu, .mobile-nav').length) {
+          $('.nav-menu .active, .mobile-nav .active').removeClass('active');
+          $(this).closest('li').addClass('active');
+        }
+
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('.mobile-nav-overly').fadeOut();
+        }
+        return false;
+      }
+    }
+  });
+
+  // Activate smooth scroll on page load with hash links in the url
+  $(document).ready(function() {
+    if (window.location.hash) {
+      var initial_nav = window.location.hash;
+      if ($(initial_nav).length) {
+        var scrollto = $(initial_nav).offset().top - scrolltoOffset;
+        $('html, body').animate({
+          scrollTop: scrollto
+        }, 1500, 'easeInOutExpo');
+      }
+    }
+  });
+
+  // Mobile Navigation
+  if ($('.nav-menu').length) {
+    var $mobile_nav = $('.nav-menu').clone().prop({
+      class: 'mobile-nav d-lg-none'
+    });
+    $('body').append($mobile_nav);
+    $('.mobile-nav').prepend('<button type="button" class="mobile-nav-close"><i class="icofont-close"></i></button>');
+    $('#header').append('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>');
+    $('body').append('<div class="mobile-nav-overly"></div>');
+
+    $(document).on('click', '.mobile-nav-toggle', function(e) {
+      $('body').toggleClass('mobile-nav-active');
+      $('.mobile-nav-overly').toggle();
+    });
+
+    $(document).on('click', '.mobile-nav-close', function(e) {
+      $('body').removeClass('mobile-nav-active');
+      $('.mobile-nav-overly').fadeOut();
+    });
+
+    $(document).on('click', '.mobile-nav .drop-down > a', function(e) {
+      e.preventDefault();
+      $(this).next().slideToggle(300);
+      $(this).parent().toggleClass('active');
+    });
+
+    $(document).click(function(e) {
+      var container = $(".mobile-nav, .mobile-nav-toggle");
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+          $('.mobile-nav-overly').fadeOut();
+        }
+      }
+    });
+  } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
+    $(".mobile-nav, .mobile-nav-toggle").hide();
+  }
+
+  // Toggle .header-scrolled class to #header when page is scrolled
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('#header').addClass('header-scrolled');
+      $('#topbar').addClass('topbar-scrolled');
+    } else {
+      $('#header').removeClass('header-scrolled');
+      $('#topbar').removeClass('topbar-scrolled');
+    }
+  });
+
+  if ($(window).scrollTop() > 100) {
+    $('#header').addClass('header-scrolled');
+    $('#topbar').addClass('topbar-scrolled');
+  }
+
+  // Navigation active state on scroll
+  var nav_sections = $('section');
+  var main_nav = $('.nav-menu, .mobile-nav');
+
+  $(window).on('scroll', function() {
+    var cur_pos = $(this).scrollTop() + 200;
+
+    nav_sections.each(function() {
+      var top = $(this).offset().top,
+        bottom = top + $(this).outerHeight();
+
+      if (cur_pos >= top && cur_pos <= bottom) {
+        if (cur_pos <= bottom) {
+          main_nav.find('li').removeClass('active');
+        }
+        main_nav.find('a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
+      }
+      if (cur_pos < 300) {
+        $(".nav-menu ul:first li:first").addClass('active');
+      }
+    });
+  });
+
+  // Back to top button
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.back-to-top').fadeIn('slow');
+    } else {
+      $('.back-to-top').fadeOut('slow');
+    }
+  });
+
+  $('.back-to-top').click(function() {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 1500, 'easeInOutExpo');
+    return false;
+  });
+
+  // Menu list isotope and filter
+  $(window).on('load', function() {
+    var menuIsotope = $('.menu-container').isotope({
+      itemSelector: '.menu-item',
+      layoutMode: 'fitRows'
+    });
+
+    $('#menu-flters li').on('click', function() {
+      $("#menu-flters li").removeClass('filter-active');
+      $(this).addClass('filter-active');
+
+      menuIsotope.isotope({
+        filter: $(this).data('filter')
+      });
+      aos_init();
+    });
+  });
+
+  // Events carousel (uses the Owl Carousel library)
+  $(".events-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    items: 1
+  });
+
+  // Testimonials carousel (uses the Owl Carousel library)
+  $(".testimonials-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    autoplayTimeout: 6000,
+    responsive: {
+      0: {
+        items: 1
+      },
+      768: {
+        items: 2
+      },
+      900: {
+        items: 3
+      }
+    }
+  });
+
+  // Initiate venobox lightbox
+  $(document).ready(function() {
+    $('.venobox').venobox();
+  });
+
+  // Init AOS
+  function aos_init() {
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  }
+  $(window).on('load', function() {
+    aos_init();
+  });
+
+})(jQuery);

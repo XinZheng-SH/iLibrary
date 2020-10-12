@@ -1,11 +1,3 @@
-<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-<!--<script type="text/javascript">-->
-<!--	setTimeout(function (){-->
-<!--		$('#disappear_div').remove();-->
-<!--		$('#appear_div').css("visibility", "visible");-->
-<!--	},3000)-->
-<!--</script>-->
-
 <div class="container-fluid">
 <div class="row" style="margin-top: 5em;">
 	<div class="col-sm-3" id="side-bar" >
@@ -14,25 +6,25 @@
 			<ul class="list-group list-group-flush" >
 				<li class="list-group-item" style="justify-content: center;">
 					<div class="card" style="width: 100%;">
-						<div class="card" style="width: 100%;">
+						<div class="card" style="width: 100%;background: #2f2f2f;">
 							<div id="library-img">
 							</div>
-							<div class="card-body">
+							<div class="card-body" style="background: #2f2f2f">
 								<h5 class="card-title" style="font-size: 1em; font-style: italic; font-weight: bold;">
 									<span id="library-name"></span>
 								</h5>
-							</div>
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">Open Hour:
-									<span id="library-hour"></span>
+							</div style="background: #2f2f2f">
+							<ul class="list-group list-group-flush" style="background: #2f2f2f">
+								<li class="list-group-item" style="background: #2f2f2f">Open Hour:
+									<span id="library-hour" ></span>
 								</li>
-								<li class="list-group-item">Wifi Available:
+								<li class="list-group-item" style="background: #2f2f2f">Wifi Available:
 									<span id="library-Wifi"></span>
 								</li>
-								<li class="list-group-item">Phone:
+								<li class="list-group-item" style="background: #2f2f2f">Phone:
 									<span id="library-phone"></span>
 								</li>
-								<li class="list-group-item">Email:
+								<li class="list-group-item" style="background: #2f2f2f">Email:
 									<span id="library-email"></span>
 								</li>
 							</ul>
@@ -329,7 +321,7 @@
 							$('#library-phone').text(response.Phone);
 							$('#library-email').text(response.Email);
 
-							$('#library-img').html('<img class="card-img-top" src="<?php echo base_url() ?>/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
+							$('#library-img').html('<img class="card-img-top" src="<?php echo base_url('assets/img/libraryImg/') ?>' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
 							// value of Branch Name
 							return response.Branch_Name;
 						}
