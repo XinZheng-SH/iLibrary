@@ -18,28 +18,28 @@
 	<script src="<?php echo base_url('assets/js/script.js') ?>" type="text/javascript"></script>
 </head>
 <body>
-	<header>
+	<header class="">
 
-		<nav class="navbar navbar-light" style="justify-content: space-evenly;height: 80px; background-color: rgba(0,0,0,0.66);"; >
+		<nav class="navbar navbar-light" style="justify-content: center;height: 80px; background-color: rgba(0,0,0,0.66);"; >
 <!--			redirect back to default homepage-->
 
-			<a class="navbar-brand logo" href="<?php echo site_url()?>"></a>
+			<a class="navbar-brand" href="<?php echo site_url()?>"></a>
 				<a href="<?php echo base_url('Radar/view') ?>">
 <!--									Button trigger for radar-->
-					<button type="button" class="btn btn-outline-warning"  >Radar</button>
+					<button type="button" class="btn btn-outline-warning " style="margin-right: 200px" >Radar</button>
 				</a>
 
-				<a href="<?php echo base_url('game/index') ?>">
+				<a href="<?php echo base_url('Game/index') ?>">
 <!--										Button trigger for radar-->
-					<button type="button" class="btn btn-outline-warning"  >Game</button>
+					<button type="button" class="btn btn-outline-warning " style="margin-right: 200px" >Game</button>
 				</a>
-			<a href="<?php echo base_url('Home/book') ?>">
+			<a href="<?php echo base_url('Books/view') ?>">
 				<!--	Button for Book-->
-				<button type="button" class="btn btn-outline-warning" >Book</button>
+				<button type="button" class="btn btn-outline-warning " >Book</button>
 			</a>
-			<a href="<?php echo base_url('Home/book') ?>">
+			<a href="<?php echo site_url()?>">
 				<!--	Button for About-->
-				<button type="button" class="btn btn-outline-warning" >About</button>
+				<button type="button" class="btn btn-outline-warning " >About</button>
 			</a>
 
 		</nav>

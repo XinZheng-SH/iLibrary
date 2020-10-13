@@ -7,7 +7,7 @@
 <!--</script>-->
 
 <div class="container-fluid">
-<div class="row" style="margin-top: 5em;">
+<div class="row" style="margin-top: 1px;">
 	<div class="col-sm-3" id="side-bar" >
 		<div class="card">
 			<div class="card-header">1 library found</div>

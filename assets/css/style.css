@@ -6,8 +6,8 @@ body {
 
 .banner, #side-bar, #radar-block, #video, #user-profile, .notification{
 	border-style: solid;
-	border-color: red;
-	border-width: 2px;
+	border-color: black;
+	border-width: 1px;
 }
 
 #radar-block {
@@ -53,13 +53,16 @@ body {
 	left: 10px;
 }
 
+.navbar a:last-child{
+	position: absolute;
+	right: 60px;
+}
+
 #nav-search {
 	width: 50%;
 }
 
-.btnOnePointFive {
-	width: 150%;
-}
+
 
 .darkYellow{
 	background-color: darkgoldenrod;
