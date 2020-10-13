@@ -20,7 +20,7 @@
 <body>
 	<header class="">
 
-		<nav class="navbar navbar-light" style="justify-content: center;height: 80px; background-color: rgba(0,0,0,0.66);"; >
+		<nav class="navbar navbar-light" style="justify-content: center;height: 80px; background-color: rgba(0,0,0,0.66); z-index: 999999;"; >
 <!--			redirect back to default homepage-->
 
 			<a class="navbar-brand" href="<?php echo site_url()?>"></a>
