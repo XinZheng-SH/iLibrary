@@ -1,15 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Game Page</title>
-	<link rel="stylesheet" type="text/css"
-		  href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
-</head>
-<body>
+
 	<div class="coverMark">
 		<div class="container">
 			<div class="inner-container">
@@ -31,8 +20,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</a>
 		</h2>
 	</div>
-		</div>
-	</div>
 
 	<div id="bookModal" class="modal">
 		<!-- Modal content -->
@@ -52,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<a href="<?php echo base_url('Radar/view') ?>" class="btn btn-light align-self-center" type="button">Go to nearby library
 			</a>
 	</div>
-</body>
+
 
 <style>
 	body {
@@ -168,4 +155,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	}
 </script>
-</html>
+
