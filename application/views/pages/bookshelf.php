@@ -1,9 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--  <head>-->
-<!--    <meta charset="utf-8" />-->
-<!--    <title>BookShelf</title>-->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
     <style type="text/css">
 
 *{
@@ -152,7 +146,7 @@
       </div>
     </div>
   </div >
-      <div style="color:"><h1>bookshelf</h1></div>
+      <div style="color: rgba(255,255,255,0.7)"><h1>bookshelf</h1></div>
       <div id="bookshelfContainer">
         <div id="bookContainer1">
           <div id="book" data-toggle="modal" data-target="#exampleModal">
