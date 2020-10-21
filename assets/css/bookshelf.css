@@ -41,3 +41,9 @@
   background-color: cornsilk;
   margin-right: 30px;
 }
+
+.record {
+  border: 2px solid rgb(22, 166, 185);
+  padding: 1em;
+  margin-top: 1em;
+}

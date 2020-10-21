@@ -140,8 +140,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Add to list</button>
+                  <a href="http://maps.google.co.uk/maps?q=central library"?
+          <button type="button" class="btn btn-primary">Go to library</button>
+          </a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right:50px;">Close</button>
         </div>
       </div>
     </div>
