@@ -40,6 +40,32 @@
 									<a href="<?php echo base_url(''); ?>Books/bookConnect" class="card-link">Popular book</a>
 									<a href="http://maps.google.co.uk/maps?q=central library" class="card-link">Google Map</a>
 								</div>
+
+								<div class="card-body">
+<!--									<form id="login-form" method="post" action="javascript:;" onsubmit="instant_comment(--><?php //echo get_cookie('libraryID')?>
+<!--										  class="form" role="form" autocomplete="off">-->
+<!--										<div class="form-group row">-->
+<!--											<div class="col-lg-12">-->
+<!--												<input class="form-control" name="contents" type="text" style="font-size: 0.9em;">-->
+<!--											</div>-->
+<!--										</div>-->
+<!--										<div class="form-group row" style="margin: 0">-->
+<!--											<div class="col-lg-12"  style="margin-left:1.10em;">-->
+<!--												<input type="submit" style="width: 70%; font-size: 0.5em;" class="btn btn-success" value="Comment">-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</form>-->
+									<div class="row">
+										<input class="form-control" id="true_comment" name="contents" type="text" style="font-size: 0.9em;">
+									</div>
+									<div class="row">
+										<button onclick="instant_comment()" type="button" class="btn btn-success" style="margin-right: 10em;">Register</button>
+									</div>
+
+									<div id="comments-area">
+
+									</div>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -165,7 +191,7 @@
 					// markerArray.push(hospital);
 					// markerArray.push(gabba);
 					// markerArray.push(toowong);
-					console.log("markerArray" + markerArray)
+					console.log("markerArray" + markerArray);
 
 					var vectorSource = new ol.source.Vector({});
 
@@ -224,7 +250,7 @@
 						myMap.getView().setCenter(coor);
 					}
 
-					$("#track-position").click(() => getLocation())
+					$("#track-position").click(() => getLocation());
 
 					function finalRefersh() {
 						$("#map").empty();
@@ -266,6 +292,7 @@
 								// console.log(icon_id);
 								$(element).popover('show');
 								library_detail(icon_id);
+								comment_detail(icon_id);
 							} else {
 								$(element).popover('dispose');
 							}
@@ -296,7 +323,7 @@
 					$id = $row["id"];
 					?>
 					<script>
-						//console.log((<?php //echo $Latitude 
+						//console.log((<?php //echo $Latitude
 										?>//));
 						addMarker(<?php echo $Longitude ?>, <?php echo $Latitude ?>, <?php echo $id ?>);
 					</script>
@@ -329,7 +356,45 @@
 								document.cookie = "branchName="+ response.Branch_Name+"; expires=Thu, 10 Dec 2020 12:00:00 UTC; path=/"
 								// value of Branch Name
 								// return response.Branch_Name;
+								document.cookie = "libraryID="+ icon_id +"; expires=Thu, 10 Dec 2020 12:00:00 UTC; path=/"
+							}
+						})
+					}
 
+					function comment_detail(icon_id) {
+						// 
+						console.log(icon_id);
+						$.ajax({
+							url: '<?php echo base_url() ?>Radar/getComment',
+							method: 'post',
+							data: {
+								icon_id: icon_id
+							},
+							dataType: 'json',
+							success: function(response) {
+								var len = response.length;
+								for (var i = 0; i < len; i++) {
+									$('#comments-area').append('<div class="comment" style="height: 10px; width: 100%;"></div>');
+									$('.comments').text(response.contents + "Users:" + response.username)
+									console.log(response[i].contents);
+								}
+							}
+						})
+					}
+
+					function instant_comment() {
+						var inputVal = document.getElementById("true_comment").value;
+						$.ajax({
+							url: '<?php echo base_url('Radar/insert_comment') ?>',
+							method: 'post',
+							data: {
+								inputVal: inputVal
+							},
+							dataType: 'json',
+							success: function(response) {
+								console.log(inputVal);
+								console.log(response);
+								$('#comments-area').text(response.contents);
 							}
 						})
 					}

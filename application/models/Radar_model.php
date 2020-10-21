@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Radar_modal extends CI_Model
+class Radar_model extends CI_Model
 {
 
 	public function __construct()
@@ -20,6 +20,22 @@ class Radar_modal extends CI_Model
 		$this->db->from('library_data');
 		$this->db->where('id', $library_id);
 		return $this->db->get()->row();
+	}
+
+	function createComment($username, $id, $content) {
+		$data = array(
+			'username' => $username,
+			"contents" => $content,
+			'library_id' => $id
+		);
+		$this->db->insert('tbl_comment', $data);
+	}
+
+	function get_comments($id) {
+		$this->db->select('*');
+		$this->db->from('tbl_comment');
+		$this->db->where('library_id', $id);
+		return $this->db->get();
 	}
 
 //	function get_latitude($id) {

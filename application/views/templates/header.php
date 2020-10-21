@@ -52,6 +52,10 @@
 			<a href="<?php echo base_url('Books/view') ?>">
 				<button type="button" class="btn btn-outline-warning ">Book</button>
 			</a>
+<!--			Login Portal-->
+			<a href="<?php echo base_url('Login/SignIn') ?>">
+				<button type="button" class="btn btn-outline-warning " >Login</button>
+			</a>
 			<a href="<?php echo base_url('Books/bookConnect') ?>">
 				<button type="button" class="btn btn-outline-warning ">BookTest</button>
 			</a>

@@ -5,16 +5,24 @@ class Books extends CI_Controller
 {
 	public function view()
 	{
-
+	if ($this->session->userdata('logged_in')) {
+		$data['username'] = $this->session->userdata('username');
+		$this->load->view('templates/logged_header', $data);
+	} else {
 		$this->load->view('templates/header');
+	}
 		$this->load->view('pages/bookshelf');
 		$this->load->view('templates/footer');
 	}
 
 	public function bookConnect()
 	{
-
-		$this->load->view('templates/header');
+		if ($this->session->userdata('logged_in')) {
+			$data['username'] = $this->session->userdata('username');
+			$this->load->view('templates/logged_header', $data);
+		} else {
+			$this->load->view('templates/header');
+		}
 		$this->load->view('pages/bookConnect');
 		$this->load->view('templates/footer');
 	}
