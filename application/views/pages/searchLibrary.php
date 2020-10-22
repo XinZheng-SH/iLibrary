@@ -127,6 +127,9 @@
 					}
 				</script>
 				<script>
+
+					var currentTapLibId = '';
+
 					var coor = [17039348.214874785, -3191341.334648482];
 
 					//UQ
@@ -289,6 +292,7 @@
 								document.getElementById('side-bar').style.display = 'block';
 
 								var icon_id = feature.get('id');
+								currentTapLibId = icon_id;
 								// console.log(icon_id);
 								$(element).popover('show');
 								library_detail(icon_id);
@@ -372,10 +376,11 @@
 							},
 							dataType: 'json',
 							success: function(response) {
+								console.log("len:" + response.length)
 								var len = response.length;
 								$('#comments-area').html('<div class="comment" style="height: 10px; width: 100%;"></div>');
-
-								for (var i = 0; i < len; i++) {
+								var baseIndex = len > 6 ? len-5 : 0;
+								for (var i = (len-1); i > baseIndex; i--) {
 									const word = response[i].words;
 									console.log("balabla"+word);
 									$('.comment').append(word + " User: " + response[i].username)
@@ -398,8 +403,10 @@
 							success: function(response) {
 								console.log(inputVal);
 								console.log(response);
-								$('#comments-area').text(response.contents);
+								// $('#comments-area').text(response.contents);
+								comment_detail(currentTapLibId);
 							}
+
 						})
 					}
 				</script>
