@@ -36,12 +36,12 @@
 										<span id="library-email"></span>
 									</li>
 								</ul>
-								<div class="card-body">
+								<div class="card-body" style="height: 3rem">
 									<a href="<?php echo base_url(''); ?>Books/bookConnect" class="card-link">Popular book</a>
 									<a href="http://maps.google.co.uk/maps?q=central library" class="card-link">Google Map</a>
 								</div>
 
-								<div class="card-body">
+								<div class="card-body" style="padding: 0;height: 2rem;margin-top: 0">
 <!--									<form id="login-form" method="post" action="javascript:;" onsubmit="instant_comment(--><?php //echo get_cookie('libraryID')?>
 <!--										  class="form" role="form" autocomplete="off">-->
 <!--										<div class="form-group row">-->
@@ -55,11 +55,11 @@
 <!--											</div>-->
 <!--										</div>-->
 <!--									</form>-->
-									<div class="row">
-										<input class="form-control" id="true_comment" name="contents" type="text" style="font-size: 0.9em;">
+									<div class="row" style="margin-bottom: 0;margin-top: 4.5rem; width: 100%; height: 2rem;">
+										<input placeholder="Here to write your comments" class="form-control" id="true_comment" name="contents" type="text" style="">
 									</div>
-									<div class="row">
-										<button onclick="instant_comment()" type="button" class="btn btn-success" style="margin-right: 10em;">Register</button>
+									<div class="row" style="">
+										<button onclick="instant_comment()" type="button" class="btn" style="left:10%;margin-top: 2rem">Comment</button>
 									</div>
 
 									<div id="comments-area">
@@ -373,10 +373,14 @@
 							dataType: 'json',
 							success: function(response) {
 								var len = response.length;
+								$('#comments-area').html('<div class="comment" style="height: 10px; width: 100%;"></div>');
+
 								for (var i = 0; i < len; i++) {
-									$('#comments-area').append('<div class="comment" style="height: 10px; width: 100%;"></div>');
-									$('.comments').text(response.contents + "Users:" + response.username)
-									console.log(response[i].contents);
+									const word = response[i].words;
+									console.log("balabla"+word);
+									$('.comment').append(word + " User: " + response[i].username)
+									$('.comment').append('<br/>')
+									// console.log(response[i].contents);
 								}
 							}
 						})

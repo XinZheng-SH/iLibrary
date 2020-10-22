@@ -48,9 +48,9 @@ class Radar extends CI_Controller {
 
 	public function insert_comment() {
 		$library_id = get_cookie('libraryID');
-		$content = $this->input->post('inputVal');
+		$words = $this->input->post('inputVal');
 		$username = $this->session->userdata('username');
-		$this->Radar_model->createComment($username, $library_id, $content);
+		$this->Radar_model->createComment($username, $library_id, $words);
 		$result = $this->Radar_model->get_comments($library_id)->row();
 
 		echo json_encode($result);

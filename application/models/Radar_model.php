@@ -25,7 +25,7 @@ class Radar_model extends CI_Model
 	function createComment($username, $id, $content) {
 		$data = array(
 			'username' => $username,
-			"contents" => $content,
+			"words" => $content,
 			'library_id' => $id
 		);
 		$this->db->insert('tbl_comment', $data);
