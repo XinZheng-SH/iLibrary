@@ -409,6 +409,16 @@
 
 						})
 					}
+
+					$(function() {
+						$.ajaxSetup({
+							error: function(jqXHR, exception) {
+								if (jqXHR.status === 500) {
+									alert('You need to login to comment');
+								}
+							}
+						});
+					});
 				</script>
 
 			</div>
