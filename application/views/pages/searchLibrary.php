@@ -4,29 +4,29 @@
 	<div class="row" style="margin-top: 1px;">
 		<div class="col-sm-3" id="side-bar">
 			<div class="card">
-				<div class="card-header">1 library found</div>
+<!--				<div class="card-header">1 library found</div>-->
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item" style="justify-content: center;">
+					<li class="list-group-item" style="justify-content: center;padding-bottom: 0">
 						<div class="card" style="width: 100%;">
 							<div class="card" style="width: 100%;">
 								<div id="library-img">
 								</div>
-								<div class="card-body">
-									<h5 class="card-title" style="font-size: 1em; font-style: italic; font-weight: bold;">
+								<div class="card-body" style="height: 50px">
+									<h5 class="card-title" style="font-size: 1em; font-style: italic; font-weight: bold;margin-top: 1px">
 										<span id="library-name"></span>
 									</h5>
 								</div>
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Open Hour:
+									<li class="list-group-item" style="height: 35px">Open Hour:
 										<span id="library-hour"></span>
 									</li>
-									<li class="list-group-item">Wifi Available:
+									<li class="list-group-item" style="height: 35px">Wifi Available:
 										<span id="library-Wifi"></span>
 									</li>
-									<li class="list-group-item">Phone:
+									<li class="list-group-item" style="height: 35px">Phone:
 										<span id="library-phone"></span>
 									</li>
-									<li class="list-group-item">Email:
+									<li class="list-group-item" style="height: 35px">Email:
 										<span id="library-email"></span>
 									</li>
 								</ul>
@@ -69,7 +69,6 @@
 					var latitude;
 					var longitude;
 
-					// hide element
 					document.getElementById('side-bar').style.display = 'none';
 
 					var result = document.getElementById("result");
@@ -136,12 +135,7 @@
 
 					}
 
-
-					console.log("markerArray" + markerArray);
-
 					var vectorSource = new ol.source.Vector({});
-
-					// vectorSource.addFeatures(markerArray);
 
 					var vectorLayer = new ol.layer.Vector({
 						source: vectorSource,
@@ -348,10 +342,11 @@
 								var baseIndex = len > 6 ? len-5 : 0;
 								for (var i = (len-1); i > baseIndex; i--) {
 									const word = response[i].words;
-									console.log("balabla"+word);
-									$('.comment').append(word + " User: " + response[i].username)
-									$('.comment').append('<br/>')
-									// console.log(response[i].contents);
+									// console.log("balabla"+word);
+									$('.comment').append('<h6>' + "User: " + '<i>' + response[i].username + '</i></h6>')
+
+									$('.comment').append("comments: " + word)
+
 								}
 							}
 						})
