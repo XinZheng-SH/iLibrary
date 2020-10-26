@@ -45,10 +45,28 @@
 								</div>
 
 								<div class="card-body" style="padding: 0;height: 2rem;margin-top: 0">
+<<<<<<< HEAD
 									<div class="row"
 										 style="margin-bottom: 0;margin-top: 4.5rem; width: 100%; height: 2rem;">
 										<input placeholder="Here to write your comments" class="form-control"
 											   id="true_comment" name="contents" type="text" style="">
+=======
+									<!--									<form id="login-form" method="post" action="javascript:;" onsubmit="instant_comment(--><?php //echo get_cookie('libraryID')?>
+									<!--										  class="form" role="form" autocomplete="off">-->
+									<!--										<div class="form-group row">-->
+									<!--											<div class="col-lg-12">-->
+									<!--												<input class="form-control" name="contents" type="text" style="font-size: 0.9em;">-->
+									<!--											</div>-->
+									<!--										</div>-->
+									<!--										<div class="form-group row" style="margin: 0">-->
+									<!--											<div class="col-lg-12"  style="margin-left:1.10em;">-->
+									<!--												<input type="submit" style="width: 70%; font-size: 0.5em;" class="btn btn-success" value="Comment">-->
+									<!--											</div>-->
+									<!--										</div>-->
+									<!--									</form>-->
+									<div class="row" style="margin-bottom: 0;margin-top: 4.5rem; width: 100%; height: 2rem;">
+										<input placeholder="Here to write your comments" class="form-control" id="true_comment" name="contents" type="text" style="">
+>>>>>>> f7d74837345be9ed3bb2a36335e668817e2386a0
 									</div>
 									<div class="row" style="">
 										<button onclick="instant_comment()" type="button" class="btn"
@@ -67,8 +85,11 @@
 			</div>
 		</div>
 		<div class="col-sm-9 container" id="radar-block">
+<<<<<<< HEAD
 			Results:
 			<hr/>
+=======
+>>>>>>> f7d74837345be9ed3bb2a36335e668817e2386a0
 			<div class="mx-auto" id="radar">
 				<div id="map" class="map">
 					<div id="popup"></div>
@@ -78,14 +99,15 @@
 
 				<label for="track-position">Locate to current position</label><br>
 				<p id="result"></p>
+<<<<<<< HEAD
 				<!--			<script src="--><?php //echo base_url('assets/js/main.js') 
 				?>
 				<!--" type="module"></script>-->
+=======
+>>>>>>> f7d74837345be9ed3bb2a36335e668817e2386a0
 
 
 				<script>
-					// testJS();
-					// init();
 					var latitude;
 					var longitude;
 
@@ -109,12 +131,8 @@
 
 					function showPosition(position) {
 						result.innerHTML = "latitude: " + position.coords.latitude +
-							"<br>longitude: " + position.coords.longitude +
-							"<br>position accuracy: " + position.coords.accuracy + "[m]";
-						// "<br>altitude: " + position.coords.altitude + " [m]" +
-						// "<br>altitude accuracy: " + position.coords.altitudeAccuracy + " [m]" +
-						// "<br>heading: " + position.coords.heading + " [degrees]" +
-						// "<br>speed: " + position.coords.speed + " [m/s]";
+								"<br>longitude: " + position.coords.longitude +
+								"<br>position accuracy: " + position.coords.accuracy + "[m]";
 						latitude = position.coords.latitude;
 						longitude = position.coords.longitude;
 					}
@@ -125,41 +143,21 @@
 
 					var coor = [17039348.214874785, -3191341.334648482];
 
-					//UQ
-					var iconFeature = new ol.Feature({
-						geometry: new ol.geom.Point(ol.proj.transform([153, -27.5], 'EPSG:4326', 'EPSG:3857')),
-						name: 'UQ',
-						population: 4000,
-						rainfall: 500,
-					});
-
-					var hospital = new ol.Feature({
-						geometry: new ol.geom.Point(ol.proj.transform([153.0177771, -27.4965477], 'EPSG:4326', 'EPSG:3857')),
-						name: 'UUQ',
-						population: 4000,
-						rainfall: 500,
-					});
-
-					var gabba = new ol.Feature({
-						geometry: new ol.geom.Point(ol.proj.transform([153.028849, -27.4928212], 'EPSG:4326', 'EPSG:3857')),
-						name: 'Gabba',
-						population: 4000,
-						rainfall: 500,
-					});
-
-					var toowong = new ol.Feature({
-						geometry: new ol.geom.Point(ol.proj.transform([152.9872332, -27.4911051], 'EPSG:4326', 'EPSG:3857')),
-						name: 'TooWong',
-						population: 4000,
-						rainfall: 500,
-					});
-
 					var iconStyle = new ol.style.Style({
 						image: new ol.style.Icon({
 							anchor: [0.5, 46],
 							anchorXUnits: 'fraction',
 							anchorYUnits: 'pixels',
 							src: 'https://openlayers.org/en/v6.4.3/examples/data/icon.png',
+						}),
+					});
+
+					var homeStyle = new ol.style.Style({
+						image: new ol.style.Icon({
+							anchor: [0.5, 46],
+							anchorXUnits: 'fraction',
+							anchorYUnits: 'pixels',
+							src: 'https://img.icons8.com/doodle/48/000000/home--v1.png',
 						}),
 					});
 
@@ -178,15 +176,7 @@
 
 					}
 
-					iconFeature.setStyle(iconStyle);
-					hospital.setStyle(iconStyle);
-					gabba.setStyle(iconStyle);
-					toowong.setStyle(iconStyle);
 
-					// markerArray.push(iconFeature);
-					// markerArray.push(hospital);
-					// markerArray.push(gabba);
-					// markerArray.push(toowong);
 					console.log("markerArray" + markerArray);
 
 					var vectorSource = new ol.source.Vector({});
@@ -226,9 +216,24 @@
 						}
 					}
 
+					function addHomeMarker(longitude,latitude){
+							var newMarker = new ol.Feature({
+								geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude], 'EPSG:4326', 'EPSG:3857')),
+							});
+							newMarker.setStyle(homeStyle);
+							markerArray.push(newMarker);
+							console.log(markerArray.length)
+					}
+
+					var homeMarkerAdded = false;
 					function showPosition(position) {
 						var currentLatitude = position.coords.latitude;
 						var currentLongitude = position.coords.longitude;
+						if (!homeMarkerAdded){
+							console.log("jia home icon")
+						addHomeMarker(currentLongitude,currentLatitude);
+						homeMarkerAdded = true;
+						finalRefersh();}
 						refreshMap(currentLongitude, currentLatitude)
 					}
 
@@ -250,7 +255,15 @@
 
 					function finalRefersh() {
 						$("#map").empty();
+						// vectorSource = new ol.source.Vector({});
+						vectorSource = new ol.source.Vector({});
+
+						// vectorSource.addFeatures(markerArray);
 						vectorSource.addFeatures(markerArray);
+						vectorLayer = new ol.layer.Vector({
+							source: vectorSource,
+						});
+
 						myMap = new ol.Map({
 							view: new ol.View({
 								center: coor,
@@ -320,6 +333,11 @@
 					$id = $row["id"];
 					?>
 					<script>
+<<<<<<< HEAD
+=======
+						//console.log((<?php //echo $Latitude
+						?>//));
+>>>>>>> f7d74837345be9ed3bb2a36335e668817e2386a0
 						addMarker(<?php echo $Longitude ?>, <?php echo $Latitude ?>, <?php echo $id ?>);
 					</script>
 
@@ -357,7 +375,7 @@
 					}
 
 					function comment_detail(icon_id) {
-						// 
+						//
 						console.log(icon_id);
 						$.ajax({
 							url: '<?php echo base_url() ?>Radar/getComment',
