@@ -16,23 +16,6 @@
     </section>
 </section>
 
-<section id="bookContainer">
-    <section id="container">
-        <section id="img6" class="bookImg"></section>
-    </section>
-    <section id="container">
-        <section id="img7" class="bookImg"></section>
-    </section>
-    <section id="container">
-        <section id="img8" class="bookImg"></section>
-    </section>
-    <section id="container">
-        <section id="img9" class="bookImg"></section>
-    </section>
-    <section id="container">
-        <section id="img10" class="bookImg"></section>
-    </section>
-</section>
 
 <?php
 
