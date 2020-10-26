@@ -18,7 +18,8 @@
 								<div id="library-img">
 								</div>
 								<div class="card-body">
-									<h5 class="card-title" style="font-size: 1em; font-style: italic; font-weight: bold;">
+									<h5 class="card-title"
+										style="font-size: 1em; font-style: italic; font-weight: bold;">
 										<span id="library-name"></span>
 									</h5>
 								</div>
@@ -37,29 +38,22 @@
 									</li>
 								</ul>
 								<div class="card-body" style="height: 3rem">
-									<a href="<?php echo base_url(''); ?>Books/bookConnect" class="card-link">Popular book</a>
-									<a href="http://maps.google.co.uk/maps?q=central library" class="card-link">Google Map</a>
+									<a href="<?php echo base_url(''); ?>Books/bookConnect" class="card-link">Popular
+										book</a>
+									<a href="http://maps.google.co.uk/maps?q=central library" class="card-link">Google
+										Map</a>
 								</div>
 
 								<div class="card-body" style="padding: 0;height: 2rem;margin-top: 0">
-<!--									<form id="login-form" method="post" action="javascript:;" onsubmit="instant_comment(--><?php //echo get_cookie('libraryID')?>
-<!--										  class="form" role="form" autocomplete="off">-->
-<!--										<div class="form-group row">-->
-<!--											<div class="col-lg-12">-->
-<!--												<input class="form-control" name="contents" type="text" style="font-size: 0.9em;">-->
-<!--											</div>-->
-<!--										</div>-->
-<!--										<div class="form-group row" style="margin: 0">-->
-<!--											<div class="col-lg-12"  style="margin-left:1.10em;">-->
-<!--												<input type="submit" style="width: 70%; font-size: 0.5em;" class="btn btn-success" value="Comment">-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</form>-->
-									<div class="row" style="margin-bottom: 0;margin-top: 4.5rem; width: 100%; height: 2rem;">
-										<input placeholder="Here to write your comments" class="form-control" id="true_comment" name="contents" type="text" style="">
+									<div class="row"
+										 style="margin-bottom: 0;margin-top: 4.5rem; width: 100%; height: 2rem;">
+										<input placeholder="Here to write your comments" class="form-control"
+											   id="true_comment" name="contents" type="text" style="">
 									</div>
 									<div class="row" style="">
-										<button onclick="instant_comment()" type="button" class="btn" style="left:10%;margin-top: 2rem">Comment</button>
+										<button onclick="instant_comment()" type="button" class="btn"
+												style="left:10%;margin-top: 2rem">Comment
+										</button>
 									</div>
 
 									<div id="comments-area">
@@ -74,7 +68,7 @@
 		</div>
 		<div class="col-sm-9 container" id="radar-block">
 			Results:
-			<hr />
+			<hr/>
 			<div class="mx-auto" id="radar">
 				<div id="map" class="map">
 					<div id="popup"></div>
@@ -85,7 +79,7 @@
 				<label for="track-position">Locate to current position</label><br>
 				<p id="result"></p>
 				<!--			<script src="--><?php //echo base_url('assets/js/main.js') 
-												?>
+				?>
 				<!--" type="module"></script>-->
 
 
@@ -111,7 +105,6 @@
 							x.innerHTML = "Geolocation is not supported by this browser.";
 						}
 					}
-
 
 
 					function showPosition(position) {
@@ -239,7 +232,7 @@
 						refreshMap(currentLongitude, currentLatitude)
 					}
 
-					var degrees2meters = function(lon, lat) {
+					var degrees2meters = function (lon, lat) {
 						var x = lon * 20037508.34 / 180;
 						var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
 						y = y * 20037508.34 / 180;
@@ -280,8 +273,8 @@
 						});
 						// display popup on click
 						// BUG HERE
-						myMap.on('click', function(evt) {
-							var feature = myMap.forEachFeatureAtPixel(evt.pixel, function(feature) {
+						myMap.on('click', function (evt) {
+							var feature = myMap.forEachFeatureAtPixel(evt.pixel, function (feature) {
 								return feature;
 							});
 							if (feature) {
@@ -303,7 +296,7 @@
 						});
 
 						// change mouse cursor when over marker
-						myMap.on('pointermove', function(e) {
+						myMap.on('pointermove', function (e) {
 							if (e.dragging) {
 								$(element).popover('dispose');
 								return;
@@ -327,8 +320,6 @@
 					$id = $row["id"];
 					?>
 					<script>
-						//console.log((<?php //echo $Latitude
-										?>//));
 						addMarker(<?php echo $Longitude ?>, <?php echo $Latitude ?>, <?php echo $id ?>);
 					</script>
 
@@ -347,7 +338,7 @@
 								icon_id: icon_id
 							},
 							dataType: 'json',
-							success: function(response) {
+							success: function (response) {
 								$('#library-name').text(response.Branch_Name);
 								$('#library-hour').text(response.Opening_Hours_Wednesday);
 								$('#library-Wifi').text(response.WiFi_Availability);
@@ -355,12 +346,12 @@
 								$('#library-email').text(response.Email);
 
 								$('#library-img').html('<img class="card-img-top" src="<?php echo base_url() ?>/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 100%;">');
-								
+
 								// Set Cookie with branchName
-								document.cookie = "branchName="+ response.Branch_Name+"; expires=Thu, 10 Dec 2020 12:00:00 UTC; path=/"
+								document.cookie = "branchName=" + response.Branch_Name + "; expires=Thu, 10 Dec 2020 12:00:00 UTC; path=/"
 								// value of Branch Name
 								// return response.Branch_Name;
-								document.cookie = "libraryID="+ icon_id +"; expires=Thu, 10 Dec 2020 12:00:00 UTC; path=/"
+								document.cookie = "libraryID=" + icon_id + "; expires=Thu, 10 Dec 2020 12:00:00 UTC; path=/"
 							}
 						})
 					}
@@ -375,14 +366,14 @@
 								icon_id: icon_id
 							},
 							dataType: 'json',
-							success: function(response) {
+							success: function (response) {
 								console.log("len:" + response.length)
 								var len = response.length;
 								$('#comments-area').html('<div class="comment" style="height: 10px; width: 100%;"></div>');
-								var baseIndex = len > 6 ? len-5 : 0;
-								for (var i = (len-1); i > baseIndex; i--) {
+								var baseIndex = len > 6 ? len - 5 : 0;
+								for (var i = (len - 1); i > baseIndex; i--) {
 									const word = response[i].words;
-									console.log("balabla"+word);
+									console.log("balabla" + word);
 									$('.comment').append(word + " User: " + response[i].username)
 									$('.comment').append('<br/>')
 									// console.log(response[i].contents);
@@ -400,7 +391,7 @@
 								inputVal: inputVal
 							},
 							dataType: 'json',
-							success: function(response) {
+							success: function (response) {
 								console.log(inputVal);
 								console.log(response);
 								// $('#comments-area').text(response.contents);
@@ -410,9 +401,9 @@
 						})
 					}
 
-					$(function() {
+					$(function () {
 						$.ajaxSetup({
-							error: function(jqXHR, exception) {
+							error: function (jqXHR, exception) {
 								if (jqXHR.status === 500) {
 									alert('You need to login to comment');
 								}
