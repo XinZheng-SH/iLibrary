@@ -1,10 +1,4 @@
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-<!--<script type="text/javascript">-->
-<!--	setTimeout(function (){-->
-<!--		$('#disappear_div').remove();-->
-<!--		$('#appear_div').css("visibility", "visible");-->
-<!--	},3000)-->
-<!--</script>-->
 
 <div class="container-fluid">
 	<div class="row" style="margin-top: 1px;">
@@ -42,19 +36,6 @@
 								</div>
 
 								<div class="card-body" style="padding: 0;height: 2rem;margin-top: 0">
-									<!--									<form id="login-form" method="post" action="javascript:;" onsubmit="instant_comment(--><?php //echo get_cookie('libraryID')?>
-									<!--										  class="form" role="form" autocomplete="off">-->
-									<!--										<div class="form-group row">-->
-									<!--											<div class="col-lg-12">-->
-									<!--												<input class="form-control" name="contents" type="text" style="font-size: 0.9em;">-->
-									<!--											</div>-->
-									<!--										</div>-->
-									<!--										<div class="form-group row" style="margin: 0">-->
-									<!--											<div class="col-lg-12"  style="margin-left:1.10em;">-->
-									<!--												<input type="submit" style="width: 70%; font-size: 0.5em;" class="btn btn-success" value="Comment">-->
-									<!--											</div>-->
-									<!--										</div>-->
-									<!--									</form>-->
 									<div class="row" style="margin-bottom: 0;margin-top: 4.5rem; width: 100%; height: 2rem;">
 										<input placeholder="Here to write your comments" class="form-control" id="true_comment" name="contents" type="text" style="">
 									</div>
@@ -135,7 +116,8 @@
 							anchor: [0.5, 46],
 							anchorXUnits: 'fraction',
 							anchorYUnits: 'pixels',
-							src: 'https://img.icons8.com/doodle/48/000000/home--v1.png',
+							src: 'https://img.icons8.com/doodle/48/000000/user-location.png',
+						//	user pin icon: https://img.icons8.com/doodle/48/000000/user-location.png
 						}),
 					});
 

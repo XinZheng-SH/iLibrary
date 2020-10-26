@@ -15,13 +15,13 @@
 	<nav id="secondary-menu">
 		<ul>
 			<li>
-				<a href="#">Contact Us</a>
+				<a href="<?php echo base_url(''); ?>Pages/team_profile">Contact Us</a>
 			</li>
 			<li>
-				<a href="#">Privacy Policy</a>
+				<a href="<?php echo base_url(''); ?>Pages/team_profile">Privacy Policy</a>
 			</li>
 			<li>
-				<a href="#">Copyright</a>
+				<a href="<?php echo base_url(''); ?>Pages/team_profile">Copyright</a>
 			</li>
 		</ul>
 	</nav>

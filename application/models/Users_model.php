@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users_model extends CI_Model {
 
+	// link to database
 	public function __construct()
 	{
 		$this->load->database();
@@ -26,6 +27,7 @@ class Users_model extends CI_Model {
 		return $query;
 	}
 
+	// create new user
 	function insert_user() {
 		$data = array (
 			"email" => $this->input->post('email'),

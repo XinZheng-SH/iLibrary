@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Books extends CI_Controller
 {
+	// load all views related to popular book list
 	public function view()
 	{
 	if ($this->session->userdata('logged_in')) {

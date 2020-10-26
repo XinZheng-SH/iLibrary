@@ -2,24 +2,28 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
 
+	// link to User modal
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('Users_model');
 	}
 
+	// redirect to the login page
 	public function SignIn() {
 		$this->load->view('templates/header');
 		$this->load->view('pages/login');
 		$this->load->view('templates/footer');
 	}
 
+	// redirect to the register page
 	public function register_page() {
 		$this->load->view('templates/header');
 		$this->load->view('pages/register');
 		$this->load->view('templates/footer');
 	}
 
+	// check form validation, if all pass, register new user account
 	public function create() {
 		// set rules for validation
 		$this->form_validation->set_rules("lastName", "Your Name", "required|alpha|max_length[20]");
@@ -46,11 +50,13 @@ class Login extends CI_Controller {
 		}
 	}
 
+	// check if the user exists in the database
 	public function auth() {
 		$username = $this->input->post('username', TRUE);
 		$password = $this->input->post('password', TRUE);
 		$result = $this->Users_model->check_user($username, $password);
 
+		// return 1 row if exists
 		if ($result->num_rows() > 0) {
 			$data = $result->row_array();
 			$username = $data['username'];
@@ -72,13 +78,14 @@ class Login extends CI_Controller {
 		}
 	}
 
+	// pass user info to logged_header view to remind the user that he has already signed in.
 	public function logged() {
 		$data['username'] = $this->session->userdata('username');
 		$this->load->view('templates/logged_header', $data);
 		$this->load->view('pages/homepage');
 	}
 
-	// logout
+	// logout, destroy session
 	public function logout() {
 		$this->session->sess_destroy();
 		redirect('Pages/view');
