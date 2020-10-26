@@ -5,6 +5,8 @@ var url = "";
 var img = "";
 var title = "";
 var author = "";
+var time = 0;
+var externalUrl = "";
 
 /* ---Read Cookie--- */
 
@@ -20,7 +22,6 @@ function getCookie(cookieName) {
 	return "";
 }
 var libraryName = getCookie("branchName");
-
 
 /* ---All APIs Request--- */
 
@@ -101,6 +102,7 @@ function iterateLibrary(data) {
 		if (branchCode && branchheading) {
 			libraries[branchCode] = branchheading;
 
+			// Check Branch Response
 			// $("#records").append(
 			// 	$('<section class="record">').append(
 			// 		$("<h2>").text(branchCode),
@@ -138,14 +140,14 @@ function iterateBook(data) {
 					}
 				);
 			});
-
-			$("#records").append(
-				$('<section class="record">').append(
-					$('<h2>').text(bookTitle),
-					$('<h3>').text(bookAuthor),
-					$('<h3>').text(checkoutLib)
-				)
-			);
+			// Check Books Response in particular library
+			// $("#records").append(
+			// 	$('<section class="record">').append(
+			// 		$("<h2>").text(bookTitle),
+			// 		$("<h3>").text(bookAuthor),
+			// 		$("<h3>").text(checkoutLib)
+			// 	)
+			// );
 		}
 	});
 }
@@ -153,20 +155,73 @@ function iterateBook(data) {
 /* ---Connect Google Book API--- */
 
 function iterateGoogleBook(data) {
-	title = $(
-		'<h5 class="center-align">' + data.items[0].volumeInfo.title + "</h5>"
-	);
-	author = $(
-		'<h5 class="center-align"> By:' + data.items[0].volumeInfo.authors + "</h5>"
-	);
-	img = $(
-		'<img class="aligning card z-depth-5" id="dynamic"><br><a href=' +
-			data.items[0].volumeInfo.infoLink +
-			'><button id="imagebutton" class="btn red aligning">Read More</button></a>'
-	);
-	url = data.items[0].volumeInfo.imageLinks.thumbnail;
-	img.attr("src", url);
-	title.appendTo("#records");
-	author.appendTo("#records");
-	img.appendTo("#records");
+	// title = $(
+	// 	'<h5 class="center-align">' + data.items[0].volumeInfo.title + "</h5>"
+	// );
+	// author = $(
+	// 	'<h5 class="center-align"> By:' + data.items[0].volumeInfo.authors + "</h5>"
+	// );
+	// img = $(
+	// 	'<img class="aligning card z-depth-5" id="dynamic"><br><a href=' +
+	// 		data.items[0].volumeInfo.infoLink +
+	// 		'><button id="imagebutton" class="btn red aligning">Read More</button></a>'
+	// );
+	// url = data.items[0].volumeInfo.imageLinks.thumbnail;
+	// img.attr("src", url);
+	// title.appendTo("#title" + time);
+	// author.appendTo("#author" + time);
+	// img.appendTo("#img" + time);
+	// time += 1;
+	var imgUrl = data.items[0].volumeInfo.imageLinks.thumbnail;
+	var externalUrl = data.items[0].volumeInfo.infoLink;
+
+	// Book Details Response
+	var bookContentTitle = data.items[0].volumeInfo.title;
+	var bookContentDesc = data.items[0].volumeInfo.description;
+	var bookContentAuthor = data.items[0].volumeInfo.authors;
+
+	// Get the modal
+	var modal = document.getElementById("myModal");
+	// Get the image and insert it inside the modal - use its "alt" text as a caption
+	var imgClick = document.getElementById("img" + time);
+	var modalImg = document.getElementById("imgModal");
+	var captionText = document.getElementById("caption");
+	var btnDiscover = document.getElementById("book-discover");
+	var bookTitle = document.getElementById("book-title");
+	var bookAuthor = document.getElementById("book-author");
+	var bookDesc = document.getElementById("book-desc");
+
+	img = $("<img src=" + imgUrl + ">");
+	img.appendTo("#img" + time);
+	time += 1;
+
+	$(imgClick).click(function () {
+		modal.style.display = "block";
+		modalImg.src = imgUrl;
+		// captionText.innerHTML = "hello";
+		bookTitle.innerHTML = bookContentTitle;
+		bookAuthor.innerHTML = bookContentAuthor;
+		bookTitle.innerHTML = bookContentTitle;
+		bookDesc.innerHTML = bookContentDesc;
+		btnDiscover.href = externalUrl;
+	});
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function () {
+		modal.style.display = "none";
+	};
+}
+
+function addToList() {
+	var bookTitle = document.getElementById("book-title").innerHTML;
+	console.log(bookTitle);
+	document.cookie =
+		"listBookTitle=" +
+		bookTitle +
+		"; expires=Thu, 10 Dec 2020 12:00:00 UTC; path=/";
+	$.post("<?php echo base_url('Books/bookAddList') ?>");
+	alert("Successfully added");
 }

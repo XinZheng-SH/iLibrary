@@ -2,6 +2,7 @@ body {
 	color: black;
 	font-size: 1.0vw;
 	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
 }
 
 .banner, #side-bar, #radar-block, #video, #user-profile, .notification{
@@ -459,4 +460,42 @@ button{
 	text-transform: uppercase;
 	border-radius: 3px;
 	text-shadow: rgba(0,0,0,0.5) 0 1px 0;
+}
+
+/*--------------------------------------------------------------
+# Books View
+--------------------------------------------------------------*/
+
+@media screen and (min-width: 600px) {
+
+  #container {
+    width: 120px;
+    padding: 20px;
+    align-items: center;
+    margin: auto;
+  }
+
+  #bookContainer {
+    width: 80%;
+    display: flex;
+    position: relative;
+    padding: 40px;
+    align-items: center;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #container {
+    width: 200px;
+    padding: 50px;
+    align-items: center;
+
+    margin: auto;
+  }
+  #bookContainer {
+    width: 100%;
+
+    position: relative;
+  }
 }

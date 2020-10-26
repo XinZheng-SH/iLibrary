@@ -7,12 +7,12 @@
 		<br>
 
 		<h2 class="radio-group">
-			<a  id="myBtn" class="btn btn-light" type="button">
+			<a  id="myBtn" class="btn" type="button">
 				<?php echo form_radio('introvert', 'accept', false);
 				echo form_label("Introvert"); ?>
 			</a>
 
-			<a  id="myBtn" class="btn btn-light" type="button">
+			<a  id="myBtn" class="btn" type="button">
 				<?php
 				echo form_radio('extrovert', 'accept', false);
 				echo form_label("Extrovert");

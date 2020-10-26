@@ -8,11 +8,11 @@
 		<br>
 
 		<div align="center">
-			<a href="<?php echo base_url('Game/index') ?>" type="button" class="btn btn-light">
+			<a href="<?php echo base_url('Games/index') ?>" type="button" class="btn">
 				Guess what you like?
 			</a>
 
-			<a href="<?php echo base_url('Radar/view') ?>" type="button" class="btn btn-light">
+			<a href="<?php echo base_url('Radar/view') ?>" type="button" class="btn">
 				Discover nearby library
 			</a>
 		</div>
