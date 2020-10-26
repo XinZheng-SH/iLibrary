@@ -10,29 +10,29 @@
 	<div class="row" style="margin-top: 1px;">
 		<div class="col-sm-3" id="side-bar">
 			<div class="card">
-				<div class="card-header">1 library found</div>
+<!--				<div class="card-header">1 library found</div>-->
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item" style="justify-content: center;">
+					<li class="list-group-item" style="justify-content: center;padding-bottom: 0">
 						<div class="card" style="width: 100%;">
 							<div class="card" style="width: 100%;">
 								<div id="library-img">
 								</div>
-								<div class="card-body">
-									<h5 class="card-title" style="font-size: 1em; font-style: italic; font-weight: bold;">
+								<div class="card-body" style="height: 50px">
+									<h5 class="card-title" style="font-size: 1em; font-style: italic; font-weight: bold;margin-top: 1px">
 										<span id="library-name"></span>
 									</h5>
 								</div>
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Open Hour:
+									<li class="list-group-item" style="height: 35px">Open Hour:
 										<span id="library-hour"></span>
 									</li>
-									<li class="list-group-item">Wifi Available:
+									<li class="list-group-item" style="height: 35px">Wifi Available:
 										<span id="library-Wifi"></span>
 									</li>
-									<li class="list-group-item">Phone:
+									<li class="list-group-item" style="height: 35px">Phone:
 										<span id="library-phone"></span>
 									</li>
-									<li class="list-group-item">Email:
+									<li class="list-group-item" style="height: 35px">Email:
 										<span id="library-email"></span>
 									</li>
 								</ul>
@@ -42,19 +42,6 @@
 								</div>
 
 								<div class="card-body" style="padding: 0;height: 2rem;margin-top: 0">
-									<!--									<form id="login-form" method="post" action="javascript:;" onsubmit="instant_comment(--><?php //echo get_cookie('libraryID')?>
-									<!--										  class="form" role="form" autocomplete="off">-->
-									<!--										<div class="form-group row">-->
-									<!--											<div class="col-lg-12">-->
-									<!--												<input class="form-control" name="contents" type="text" style="font-size: 0.9em;">-->
-									<!--											</div>-->
-									<!--										</div>-->
-									<!--										<div class="form-group row" style="margin: 0">-->
-									<!--											<div class="col-lg-12"  style="margin-left:1.10em;">-->
-									<!--												<input type="submit" style="width: 70%; font-size: 0.5em;" class="btn btn-success" value="Comment">-->
-									<!--											</div>-->
-									<!--										</div>-->
-									<!--									</form>-->
 									<div class="row" style="margin-bottom: 0;margin-top: 4.5rem; width: 100%; height: 2rem;">
 										<input placeholder="Here to write your comments" class="form-control" id="true_comment" name="contents" type="text" style="">
 									</div>
@@ -88,7 +75,6 @@
 					var latitude;
 					var longitude;
 
-					// hide element
 					document.getElementById('side-bar').style.display = 'none';
 
 					var result = document.getElementById("result");
@@ -154,12 +140,7 @@
 
 					}
 
-
-					console.log("markerArray" + markerArray);
-
 					var vectorSource = new ol.source.Vector({});
-
-					// vectorSource.addFeatures(markerArray);
 
 					var vectorLayer = new ol.layer.Vector({
 						source: vectorSource,
@@ -366,10 +347,11 @@
 								var baseIndex = len > 6 ? len-5 : 0;
 								for (var i = (len-1); i > baseIndex; i--) {
 									const word = response[i].words;
-									console.log("balabla"+word);
-									$('.comment').append(word + " User: " + response[i].username)
-									$('.comment').append('<br/>')
-									// console.log(response[i].contents);
+									// console.log("balabla"+word);
+									$('.comment').append('<h6>' + "User: " + '<i>' + response[i].username + '</i></h6>')
+
+									$('.comment').append("comments: " + word)
+
 								}
 							}
 						})
