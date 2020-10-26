@@ -1,10 +1,10 @@
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
+<!--OpenLayers API: https://openlayers.org/-->
 
 <div class="container-fluid">
 	<div class="row" style="margin-top: 1px;">
 		<div class="col-sm-3" id="side-bar">
 			<div class="card">
-<!--				<div class="card-header">1 library found</div>-->
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item" style="justify-content: center;padding-bottom: 0">
 						<div class="card" style="width: 100%;">
@@ -32,6 +32,7 @@
 								</ul>
 								<div class="card-body" style="height: 3rem">
 									<a href="<?php echo base_url(''); ?>Books/bookConnect" class="card-link">Popular book</a>
+									<!--We simulate the books are stored in the central library-->
 									<a href="http://maps.google.co.uk/maps?q=central library" class="card-link">Google Map</a>
 								</div>
 
@@ -84,8 +85,6 @@
 							x.innerHTML = "Geolocation is not supported by this browser.";
 						}
 					}
-
-
 
 					function showPosition(position) {
 						result.innerHTML = "latitude: " + position.coords.latitude +
@@ -184,7 +183,7 @@
 						var currentLatitude = position.coords.latitude;
 						var currentLongitude = position.coords.longitude;
 						if (!homeMarkerAdded){
-							console.log("jia home icon")
+							console.log("jia home icon");
 						addHomeMarker(currentLongitude,currentLatitude);
 						homeMarkerAdded = true;
 						finalRefersh();}
@@ -276,7 +275,7 @@
 						myMap.addOverlay(popup);
 					}
 				</script>
-
+				<!--Use the array passed from Controller as "latitude" and "longitude"-->
 				<?php foreach ($position as $row) { ?>
 
 					<?php
@@ -287,8 +286,6 @@
 					$id = $row["id"];
 					?>
 					<script>
-						//console.log((<?php //echo $Latitude
-						?>//));
 						addMarker(<?php echo $Longitude ?>, <?php echo $Latitude ?>, <?php echo $id ?>);
 					</script>
 
@@ -313,7 +310,8 @@
 								$('#library-Wifi').text(response.WiFi_Availability);
 								$('#library-phone').text(response.Phone);
 								$('#library-email').text(response.Email);
-
+								// All libraries images are retrieved from Brisbane City Council:
+								// https://www.brisbane.qld.gov.au/things-to-see-and-do/council-venues-and-precincts/libraries
 								$('#library-img').html('<img class="card-img-top" src="<?php echo base_url() ?>/assets/images/libraryImg/' + response.Branch_Name + '.jpg" alt="" class="responsive-img" style="height: 132px; width: 100%;">');
 
 								// Set Cookie with branchName
@@ -324,9 +322,8 @@
 							}
 						})
 					}
-
+					// call together with library_detail(), and will retrieve all comments
 					function comment_detail(icon_id) {
-						//
 						console.log(icon_id);
 						$.ajax({
 							url: '<?php echo base_url() ?>Radar/getComment',
@@ -336,7 +333,8 @@
 							},
 							dataType: 'json',
 							success: function(response) {
-								console.log("len:" + response.length)
+								// use foreach to call response[]
+								console.log("len:" + response.length);
 								var len = response.length;
 								$('#comments-area').html('<div class="comment" style="height: 10px; width: 100%;"></div>');
 								var baseIndex = len > 6 ? len-5 : 0;
@@ -344,14 +342,13 @@
 									const word = response[i].words;
 									// console.log("balabla"+word);
 									$('.comment').append('<h6>' + "User: " + '<i>' + response[i].username + '</i></h6>')
-
 									$('.comment').append("comments: " + word)
 
 								}
 							}
 						})
 					}
-
+					// use ajax to call request once the user clicks on "Comment" button, will return latest comment
 					function instant_comment() {
 						var inputVal = document.getElementById("true_comment").value;
 						$.ajax({
@@ -364,13 +361,13 @@
 							success: function(response) {
 								console.log(inputVal);
 								console.log(response);
-								// $('#comments-area').text(response.contents);
 								comment_detail(currentTapLibId);
 							}
 
 						})
 					}
-
+					// network 500 mostly caused by "no data retrieved from database" because no login status
+					// so, we set the error as an alert to remind the user, he needs to login to use the feature
 					$(function() {
 						$.ajaxSetup({
 							error: function(jqXHR, exception) {
@@ -381,7 +378,6 @@
 						});
 					});
 				</script>
-
 			</div>
 		</div>
 	</div>

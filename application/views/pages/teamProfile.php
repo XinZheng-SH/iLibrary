@@ -7,7 +7,7 @@
 			<div class="row justify-content-center" style="width: 100%; height: 40%;">
 				<div class="col-12 col-sm-4">
 					<figure>
-						<img class="img-rounded img-responsive profile-pic" src="<?php echo base_url('assets/images/liuchang.jpg') ?>" alt="Test Image" style="border-radius: 100%; max-width: 100%; max-height: 100%;">
+						<img class="img-rounded img-responsive profile-pic" src="<?php echo base_url('assets/images/Chang.jpg') ?>" alt="Test Image" style="border-radius: 100%; max-width: 100%; max-height: 100%;">
 					</figure>
 					<div style="text-align: center">
 						<h1 style="font-family: 'Arial Black'; font-size: 2rem;">Chang Liu</h1>
@@ -16,7 +16,7 @@
 				</div>
 				<div class="col-12 col-sm-4">
 					<figure>
-						<img class="img-rounded img-responsive profile-pic" src="<?php echo base_url('assets/images/avatar1.jpg') ?>" alt="Test Image" style="border-radius: 100%; max-width: 100%; max-height: 100%;">
+						<img class="img-rounded img-responsive profile-pic" src="<?php echo base_url('assets/images/ZhengXin.jpg') ?>" alt="Test Image" style="border-radius: 100%; max-width: 100%; max-height: 100%;">
 					</figure>
 					<div style="text-align: center">
 						<h1 style="font-family: 'Arial Black'; font-size: 2rem;">Xin Zheng</h1>
@@ -25,7 +25,7 @@
 				</div>
 				<div class="col-12 col-sm-4">
 					<figure>
-						<img class="img-rounded img-responsive profile-pic" src="<?php echo base_url('assets/images/avatar1.jpg') ?>" alt="Test Image" style="border-radius: 100%; max-width: 100%; max-height: 100%;">
+						<img class="img-rounded img-responsive profile-pic" src="<?php echo base_url('assets/images/XuanZhou.jpg') ?>" alt="Test Image" style="border-radius: 100%; max-width: 100%; max-height: 100%;">
 					</figure>
 					<div style="text-align: center">
 						<h1 style="font-family: 'Arial Black'; font-size: 2rem;">Xuan Zhou</h1>
@@ -36,7 +36,7 @@
 			<div class="row justify-content-around" style="width: 100%; height: 40%; margin-left: 4em;">
 				<div class="col-12 col-sm-4">
 					<figure>
-						<img class="img-rounded img-responsive profile-pic" src="<?php echo base_url('assets/images/Xudong.jpg') ?>" alt="Test Image" style="border-radius: 100%; max-width: 100%; max-height: 100%;">
+						<img class="img-rounded img-responsive profile-pic" src="<?php echo base_url('assets/images/xudong.jpg') ?>" alt="Test Image" style="border-radius: 100%; max-width: 100%; max-height: 100%;">
 					</figure>
 					<div style="text-align: center">
 						<h1 style="font-family: 'Arial Black'; font-size: 2rem;">Xudong Pu</h1>
