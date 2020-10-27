@@ -1,35 +1,27 @@
-<script src="<?php echo base_url('assets/js/bookRecommend.js') ?>"></script>
-
 <div class="coverMark">
 	<div class="container">
 		<div class="inner-container">
 			<h1>Which is your favourite subject in high school?</h1>
 
 			<h2 class="radio-group">
-				<a href="<?php echo base_url('Games/book_recommend') ?>" id="myBtn" class="btn" type="button">
-					<?php echo form_radio('Art', 'accept', false);
-					echo form_label("Art"); ?>
-				</a>
-
-				<a href="<?php echo base_url('Games/book_recommend') ?>" id="myBtn" class="btn" type="button">
-					<?php
-					echo form_radio('Math', 'accept', false);
-					echo form_label("Math");
-					?>
-				</a>
-				<a href="<?php echo base_url('Games/book_recommend') ?>" id="myBtn" class="btn" type="button">
-					<?php echo form_radio('History', 'accept', false);
-					echo form_label("History"); ?>
-				</a>
-
-				<a href="<?php echo base_url('Games/book_recommend') ?>" id="myBtn" class="btn" type="button">
-					<?php
-					echo form_radio('Physical', 'accept', false);
-					echo form_label("Physical");
-					?>
-				</a>
+				<?php echo form_open('Games/book_recommend'); ?>
+				<button type="submit" name="btn_quiz3" class="btn myBtn" value=1>
+					◌ Art
+				</button>
+				<button type="submit" name="btn_quiz3" class="btn myBtn"  value=2>
+					◌ Math
+				</button>
+				<button type="submit" name="btn_quiz3" class="btn myBtn" value=3>
+					◌ History
+				</button>
+				<button type="submit" name="btn_quiz3" class="btn myBtn"  value=4>
+					◌ Physical
+				</button>
+				<?php echo form_close();?>
 			</h2>
 		</div>
+	</div>
+</div>
 
 		<div id="bookModal" class="modal">
 			<!-- Modal content -->

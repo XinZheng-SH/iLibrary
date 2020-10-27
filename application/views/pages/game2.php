@@ -1,41 +1,35 @@
-<script src="<?php echo base_url('assets/js/bookRecommend.js') ?>"></script>
-
 <div class="coverMark">
 	<div class="container">
 		<div class="inner-container">
-			<h1>Who is your favourite writer?</h1>
-
+			<h1>Which kind of books do you like?</h1>
 			<br>
 
 			<h2 class="radio-group">
-				<a href="<?php echo base_url('Games/thiQuiz') ?>" id="myBtn" class="btn" type="button">
-					<?php echo form_radio('J. K. Rowling', 'accept', false);
-					echo form_label("J. K. Rowling"); ?>
-				</a>
+				<?php echo form_open('Games/thiQuiz'); ?>
+				<button type="submit" name="btn_quiz2" class="btn myBtn" id="quiz_btn"  value=1>
+					◌ Romantic
+				</button>
+				<button type="submit" name="btn_quiz2" class="btn myBtn" id="quiz_btn"   value=2>
+					◌ Fiction
+				</button>
+				<button type="submit" name="btn_quiz2" class="btn myBtn" id="quiz_btn"   value=3>
+					◌ Comic
+				</button>
 
-				<a  href="<?php echo base_url('Games/thiQuiz') ?>"id="myBtn" class="btn" type="button">
-					<?php
-					echo form_radio('William Shakespeare', 'accept', false);
-					echo form_label("William Shakespeare");
-					?>
-				</a>
-				<a  href="<?php echo base_url('Games/thiQuiz') ?>"id="myBtn" class="btn" type="button">
-					<?php echo form_radio('Ernest Hemingway', 'accept', false);
-					echo form_label("Ernest Hemingway"); ?>
-				</a>
+				<button type="submit" name="btn_quiz2" class="btn myBtn"  id="quiz_btn"  value=4>
+					◌ Mystery
+				</button>
 
-				<a href="<?php echo base_url('Games/thiQuiz') ?>" id="myBtn" class="btn" type="button">
-					<?php
-					echo form_radio('Jane Austen', 'accept', false);
-					echo form_label("Jane Austen");
-					?>
-				</a>
+				<?php echo form_close();?>
+
 			</h2>
 		</div>
+	</div>
+</div>
 
 		<style>
 			body {
-				background: url("<?php echo base_url(); ?>assets/images/quiz3-bg.jpg") no-repeat center center fixed;
+				background: url("<?php echo base_url(); ?>assets/images/bg-quiz2.jpg") no-repeat center center fixed;
 				-webkit-background-size: cover;
 				-moz-background-size: cover;
 				background-size: cover;
@@ -79,10 +73,6 @@
 				display: inline-block;
 				justify-content: center;
 				align-items: center;
-			}
-
-			#myBtn{
-				width: 200px;
 			}
 
 		</style>

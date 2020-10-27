@@ -115,7 +115,7 @@
             cache: true,
             success: function(data) {
                 iterateBook(data);
-                console.log(libraries);
+                // console.log(libraries);
             },
         });
         $.ajax({
@@ -124,7 +124,7 @@
             cache: true,
             success: function(data) {
                 iterateBook(data);
-                console.log(libraries);
+                // console.log(libraries);
             },
         });
         $.ajax({
@@ -133,7 +133,7 @@
             cache: true,
             success: function(data) {
                 iterateBook(data);
-                console.log(libraries);
+                // console.log(libraries);
             },
         });
         $.ajax({
@@ -142,7 +142,7 @@
             cache: true,
             success: function(data) {
                 iterateBook(data);
-                console.log(libraries);
+                // console.log(libraries);
             },
         });
     });
@@ -158,12 +158,12 @@
                 libraries[branchCode] = branchheading;
 
                 // Check Branch Response
-                // $("#records").append(
-                // 	$('<section class="record">').append(
-                // 		$("<h2>").text(branchCode),
-                // 		$("<h3>").text(branchheading)
-                // 	)
-                // );
+                $("#records").append(
+                	$('<section class="record">').append(
+                		$("<h2>").text(branchCode),
+                		$("<h3>").text(branchheading)
+                	)
+                );
             }
         });
     }
@@ -181,6 +181,8 @@
 
     function iterateBook(data) {
         $.each(data.result.records, function(recordKey, recordValue) {
+            console.log("recordKey:",
+                recordValue);
             var bookTitle = recordValue["Title"];
             var bookAuthor = recordValue["Author"];
             var checkoutLib = recordValue["Checkout Library"];

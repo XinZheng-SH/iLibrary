@@ -53,9 +53,6 @@ class Books extends CI_Controller
 			$data['username'] = $this->session->userdata('username');
 			$data['bookList'] = $this->Book_model->getList($data['username']);
 			$this->load->view('templates/logged_header', $data);
-			foreach ($data['bookList']->result_array() as $row) {
-				echo json_encode($row['book_title']) ;
-			}
 		} else {
 			$this->load->view('templates/header');
 		}

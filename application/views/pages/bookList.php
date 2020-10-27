@@ -1,71 +1,91 @@
-<section id="bookContainer">
-    <section id="container">
-        <section id="imgb1" class="bookImg"></section>
-    </section>
-    <section id="container">
-        <section id="imgb2" class="bookImg"></section>
-    </section>
-    <section id="container">
-        <section id="imgb3" class="bookImg"></section>
-    </section>
-    <section id="container">
-        <section id="imgb4" class="bookImg"></section>
-    </section>
-    <section id="container">
-        <section id="img5" class="bookImg"></section>
-    </section>
-</section>
-
-
 <?php
-
-$favoriteBook = array("");
+$favoriteBook = [];
 foreach ($bookList->result_array() as $row) {
-    echo $row['book_title'];
     array_push($favoriteBook, $row['book_title']);
 }
 ?>
 
+<section id="records"></section>
+<section id="result"></section>
+
+
+<!-- Trigger the Modal -->
+<!-- <img id="myImg" alt="bookCover" style="width:100%;max-width:300px"> -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal-Book">
+
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+
+    <!-- Modal Content (The Image) -->
+    <img id="imgModal" class="modal-content">
+
+    <!-- Modal Caption (Book) -->
+    <div id="caption">
+        <h2 id="book-title"></h2>
+        <h4 id="book-author"></h4>
+        <div id="book-desc"></div>
+
+        <a id="book-discover" target="_blank"><button type="button" class="btn" style="margin: 4rem;">Discover</button></a>
+        <a href="<?php echo base_url('Radar/view') ?>"><button id="book-add" type="button" class="btn" style="">Navigate to library</button></a>
+    </div>
+
+
+
+</div>
+
 <script>
-    var favoriteBook = "<?php echo json_encode($favoriteBook) ?>";
+    var favoriteBook = <?php echo json_encode($favoriteBook) ?>;
+    var time = 0;
+
     if (favoriteBook) {
-        console.log("favoriteBook");
-    }
-    iterateBook(favoriteBook);
-
-
-
-    function iterateBook(data) {
-        var i = 1;
-        $.each(data.result.records, function(recordKey, recordValue) {
-
-            if (bookTitle[i]) {
-                $(document).ready(function() {
-                    $.get(
-                        "https://www.googleapis.com/books/v1/volumes?q=" + favoriteBook[i],
-                        function(data) {
-                            iterateGoogleBook(data);
-                        }
-                    );
-                });
-            }
+        favoriteBook.forEach(book => {
+            // console.log(book);
+            iterateBook(book);
         });
     }
 
-    function iterateGoogleBook(data) {
+    function iterateBook(book) {
+        console.log(book);
+        if (book) {
+            $(document).ready(function() {
+                $.get(
+                    "https://www.googleapis.com/books/v1/volumes?q=" + book,
+                    function(data) {
+                        // console.log(data);
+                        iterateGoogleBook(data);
+                    }
+                );
+            });
+        }
+    }
 
+    function iterateGoogleBook(data) {
+        // Image Details Response
         var imgUrl = data.items[0].volumeInfo.imageLinks.thumbnail;
         var externalUrl = data.items[0].volumeInfo.infoLink;
+        var img = $("<img id='bookModal' src=''>");
 
         // Book Details Response
         var bookContentTitle = data.items[0].volumeInfo.title;
         var bookContentDesc = data.items[0].volumeInfo.description;
         var bookContentAuthor = data.items[0].volumeInfo.authors;
 
+        $("#records").append(
+            $('<section class="record">').append(
+                $("<h2>").text(bookContentTitle),
+                img.attr("src", imgUrl),
+                $("<h4>").text(bookContentAuthor),
+                $("<h5>").text(bookContentDesc),
+
+            )
+        );
+
         // Get the modal
         var modal = document.getElementById("myModal");
+
         // Get the image and insert it inside the modal - use its "alt" text as a caption
-        var imgClick = document.getElementById("imgb" + time);
         var modalImg = document.getElementById("imgModal");
         var captionText = document.getElementById("caption");
         var btnDiscover = document.getElementById("book-discover");
@@ -73,11 +93,11 @@ foreach ($bookList->result_array() as $row) {
         var bookAuthor = document.getElementById("book-author");
         var bookDesc = document.getElementById("book-desc");
 
-        img = $("<img src=" + imgUrl + ">");
-        img.appendTo("#imgb" + time);
-        time += 1;
+        // img = $("<img src=" + imgUrl + ">");
+        // img.appendTo("#img" + time);
+        // time += 1;
 
-        $(imgClick).click(function() {
+        $(img).click(function() {
             modal.style.display = "block";
             modalImg.src = imgUrl;
             // captionText.innerHTML = "hello";
@@ -88,7 +108,6 @@ foreach ($bookList->result_array() as $row) {
             btnDiscover.href = externalUrl;
 
         });
-
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
@@ -96,6 +115,7 @@ foreach ($bookList->result_array() as $row) {
         span.onclick = function() {
             modal.style.display = "none";
         };
+
     }
 </script>
 
@@ -106,6 +126,20 @@ foreach ($bookList->result_array() as $row) {
         -moz-background-size: cover;
         background-size: cover;
         -o-background-size: cover; */
+    }
+
+    .record {
+        text-align: center;
+         background-color:rgba(255, 255, 255, 0.4);
+        border: 1px solid rgb(22, 166, 185);
+        padding: 1em;
+        margin-top: 1em;
+    }
+
+    .result {
+        border: 5px solid rgb(22, 166, 185);
+        padding: 1em;
+        margin-top: 1em;
     }
 
     /* Style the Image Used to Trigger the Modal */
@@ -197,6 +231,7 @@ foreach ($bookList->result_array() as $row) {
         color: #bbb;
         text-decoration: none;
         cursor: pointer;
+
     }
 
     /* 100% Image Width on Smaller Screens */

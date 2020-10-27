@@ -1,42 +1,24 @@
-<script src="<?php echo base_url('assets/js/bookRecommend.js') ?>"></script>
-
 <div class="coverMark">
 	<div class="container">
 		<div class="inner-container">
-			<h1>How do you describe your personality?</h1>
-
+			<h1>Which kind of books do you like?</h1>
 			<br>
 
-			<h2>
-<!---->
-<!--				<a href="--><?php //echo base_url('Games/secQuiz') ?><!--">-->
-<!--					<button type="button" class="btn">-->
-<!--						<input type="radio" id="quiz1" name="quiz1" value="Introvert">-->
-<!--						Introvert-->
-<!--					</button>-->
-<!--				</a>-->
+			<h2 class="radio-group">
+				<?php echo form_open('Games/secQuiz'); ?>
+				<button type="submit" name="btn_quiz1" class="btn" id="quiz_btn" value=1>
+					◌ Extrovert
+				</button>
 
-				<input type="checkbox" name="jevattend" id="jevattend_id" value="1"  onclick="form.submit();"/>
-			<!--				<a href="--><?php //echo base_url('Games/secQuiz') ?><!--" class="btn btn-secondary text-white" type="button"-->
-<!--				 >-->
-<!--<!--					<input type="radio" id="quiz1" name="quiz1" value="Introvert">-->-->
-<!--<!--					<label for="quiz1" class="text-white"> Introvert</label><br>-->-->
-<!--					--><?php //echo form_radio('introvert', 'accept', false);
-//					echo form_label("Introvert"); ?>
-<!--				</a>-->
+				<button type="submit" name="btn_quiz1" class="btn" id="quiz_btn"  value=2>
+					◌ Introvert
+				</button>
 
-				<a href="<?php echo base_url('Games/secQuiz') ?>" class="btn btn-secondary" type="button"
-				>
-					<input type="radio" id="quiz1" name="quiz1" value="Introvert">
-					<label for="quiz1" class="text-white"> Extrovert</label><br>
-<!--					--><?php
-//					echo form_radio('extrovert', 'accept', false);
-//					echo form_label("Extrovert");
-//					?>
-				</a>
+				<?php echo form_close();?>
 			</h2>
 		</div>
-
+	</div>
+</div>
 
 		<style>
 			body {
@@ -63,14 +45,9 @@
 			}
 
 			h2 {
-				color: white;
+				color: black;
 				font-size: 2em;
 				text-align: center;
-			}
-
-			.radio-group {
-				/*justify-content: center;*/
-				align-items: center;
 			}
 
 			.container {
@@ -86,9 +63,8 @@
 				align-items: center;
 			}
 
-			#myBtn {
+			#quiz_btn  {
 				width: 200px;
 			}
 		</style>
-
 
