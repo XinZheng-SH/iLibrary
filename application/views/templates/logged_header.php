@@ -6,11 +6,13 @@
 	<title>iLibrary</title>
 
 	<!-- Main JS Files -->
+	<!-- Ref: Jquery source: https://jquery.com -->
 	<script src="<?php echo base_url('assets/js/jquery-3.5.1.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/main.js') ?>" type="module"></script>
 	<script src="<?php echo base_url('assets/js/script.js') ?>" type="text/javascript"></script>
 
 	<!-- Bootstrap Files -->
+	<!-- Ref: Bootstrap source: https://getbootstrap.com -->
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js') ?>" type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -19,15 +21,18 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
 
 	<!-- Book Files -->
+	<!-- Ref:cdnjs source:https://cdnjs.com -->
 	<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bookConnect.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
 	<!-- <script src="<?php echo base_url('assets/js/bookConnect.js') ?>" type="text/javascript"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 	<!-- Font Files -->
+	<!-- Ref: fontswesome source:https://fontawesome.com -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
 	<!-- Radar Files -->
+	<!-- Ref:jsdelivr source: https://www.jsdelivr.com -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
 	<script src="https://unpkg.com/@popperjs/core@2" type="text/javascript"></script>
 
