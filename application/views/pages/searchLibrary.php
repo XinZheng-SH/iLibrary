@@ -1,6 +1,7 @@
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
 <!--OpenLayers API: https://openlayers.org/-->
 
+<!--Library Display slide-->
 <div class="container-fluid">
 	<div class="row" style="margin-top: 1px;">
 		<div class="col-sm-3" id="side-bar">
@@ -40,10 +41,11 @@
 									<div class="row" style="margin-bottom: 0;margin-top: 4.5rem; width: 100%; height: 2rem;">
 										<input placeholder="Here to write your comments" class="form-control" id="true_comment" name="contents" type="text" style="">
 									</div>
+									<!--User leaves comment here-->
 									<div class="row" style="">
 										<button onclick="instant_comment()" type="button" class="btn" style="left:10%;margin-top: 2rem">Comment</button>
 									</div>
-
+									<!--User views the comments here-->
 									<div id="comments-area">
 
 									</div>
@@ -54,12 +56,16 @@
 				</ul>
 			</div>
 		</div>
+		<!--Map slide-->
 		<div class="col-sm-9 container" id="radar-block">
 			<div class="mx-auto" id="radar">
-				<div id="map" class="map">
+				<!--The instance of map-->
+				<div id="map" class="map">\
+					<!--Pop Up layer of map-->
 					<div id="popup"></div>
 				</div>
 
+				<!--User can locate the current position on the map-->
 				<input type="checkbox" id="track-position" name="track" onclick="getLocation()">
 
 				<label for="track-position">Locate to current position</label><br>
@@ -67,6 +73,7 @@
 
 
 				<script>
+					// The user location. Initialized with null.
 					var latitude;
 					var longitude;
 
@@ -74,18 +81,17 @@
 
 					var result = document.getElementById("result");
 
+					//Get user current location
 					function getLocation() {
 						if (navigator.geolocation) {
 							navigator.geolocation.watchPosition(showPosition, null, {
 								enableHighAccuracy: true
 							});
-
-							// refreshMap(latitude,longitude);
 						} else {
 							x.innerHTML = "Geolocation is not supported by this browser.";
 						}
 					}
-
+					//Show user current location
 					function showPosition(position) {
 						result.innerHTML = "latitude: " + position.coords.latitude +
 								"<br>longitude: " + position.coords.longitude +
@@ -95,11 +101,11 @@
 					}
 				</script>
 				<script>
-
+					// Capture the map id which user is tapping on
 					var currentTapLibId = '';
-
+					//Initialized Map Center Point -> Brisbane City
 					var coor = [17039348.214874785, -3191341.334648482];
-
+					//Icon style for libraries
 					var iconStyle = new ol.style.Style({
 						image: new ol.style.Icon({
 							anchor: [0.5, 46],
@@ -109,18 +115,22 @@
 						}),
 					});
 
+					//Icon style for home marker
 					var homeStyle = new ol.style.Style({
 						image: new ol.style.Icon({
 							anchor: [0.5, 46],
 							anchorXUnits: 'fraction',
 							anchorYUnits: 'pixels',
 							src: 'https://img.icons8.com/doodle/48/000000/user-location.png',
-						//	user pin icon: https://img.icons8.com/doodle/48/000000/user-location.png
 						}),
 					});
 
+					//An array to store all necessary markers
 					var markerArray = [];
 
+					//A function to push marker into markerArray
+					//longitude,latitude(float): The exact position of marker
+					//id(int): Library ID
 					function addMarker(longitude, latitude, id) {
 						var newMarker = new ol.Feature({
 							geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude], 'EPSG:4326', 'EPSG:3857')),
@@ -134,6 +144,7 @@
 
 					}
 
+					// vectorLayer, rasterLayerMap(Object): initialized components
 					var vectorSource = new ol.source.Vector({});
 
 					var vectorLayer = new ol.layer.Vector({
@@ -170,26 +181,28 @@
 					}
 
 					function addHomeMarker(longitude,latitude){
-							var newMarker = new ol.Feature({
-								geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude], 'EPSG:4326', 'EPSG:3857')),
-							});
-							newMarker.setStyle(homeStyle);
-							markerArray.push(newMarker);
-							console.log(markerArray.length)
+						var newMarker = new ol.Feature({
+							geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude], 'EPSG:4326', 'EPSG:3857')),
+						});
+						newMarker.setStyle(homeStyle);
+						markerArray.push(newMarker);
+						console.log(markerArray.length)
 					}
 
+					// Attach home marker on the map
 					var homeMarkerAdded = false;
 					function showPosition(position) {
 						var currentLatitude = position.coords.latitude;
 						var currentLongitude = position.coords.longitude;
 						if (!homeMarkerAdded){
 							console.log("jia home icon");
-						addHomeMarker(currentLongitude,currentLatitude);
-						homeMarkerAdded = true;
-						finalRefersh();}
+							addHomeMarker(currentLongitude,currentLatitude);
+							homeMarkerAdded = true;
+							finalRefersh();}
 						refreshMap(currentLongitude, currentLatitude)
 					}
 
+					// An algorithm to convert 2 types of coordinates
 					var degrees2meters = function(lon, lat) {
 						var x = lon * 20037508.34 / 180;
 						var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
@@ -197,6 +210,7 @@
 						return [x, y]
 					};
 
+					// Refresh the map to set the center point
 					function refreshMap(longitude, latitude) {
 
 						coor = degrees2meters(longitude, latitude);
@@ -206,6 +220,7 @@
 
 					$("#track-position").click(() => getLocation());
 
+					// After pushing all necessary markers in, reload the map
 					function finalRefersh() {
 						$("#map").empty();
 						// vectorSource = new ol.source.Vector({});
@@ -237,8 +252,9 @@
 							stopEvent: false,
 							offset: [0, -50],
 						});
-						// display popup on click
-						// BUG HERE
+
+						// Retrieve map id when user click the marker.
+						// Pass icon_id to other functions
 						myMap.on('click', function(evt) {
 							var feature = myMap.forEachFeatureAtPixel(evt.pixel, function(feature) {
 								return feature;
@@ -269,7 +285,6 @@
 							}
 							var pixel = myMap.getEventPixel(e.originalEvent);
 							var hit = myMap.hasFeatureAtPixel(pixel);
-							// myMap.getTarget().style.cursor = hit ? 'pointer' : '';
 							document.getElementById(myMap.getTarget()).style.cursor = hit ? 'pointer' : '';
 						});
 						myMap.addOverlay(popup);
@@ -322,6 +337,7 @@
 							}
 						})
 					}
+
 					// call together with library_detail(), and will retrieve all comments
 					function comment_detail(icon_id) {
 						console.log(icon_id);
@@ -337,10 +353,9 @@
 								console.log("len:" + response.length);
 								var len = response.length;
 								$('#comments-area').html('<div class="comment" style="height: 10px; width: 100%;"></div>');
-								var baseIndex = len > 4 ? len-3 : 0;
+								var baseIndex = len > 6 ? len-5 : 0;
 								for (var i = (len-1); i > baseIndex; i--) {
 									const word = response[i].words;
-									// console.log("balabla"+word);
 									$('.comment').append('<h6>' + "User: " + '<i>' + response[i].username + '</i></h6>')
 									$('.comment').append("comments: " + word)
 
