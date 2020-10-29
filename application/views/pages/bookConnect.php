@@ -33,6 +33,23 @@
         <section id="img10" class="bookImg"></section>
     </section>
 </section>
+<section id="bookContainer">
+    <section id="container">
+        <section id="img11" class="bookImg"></section>
+    </section>
+    <section id="container">
+        <section id="img12" class="bookImg"></section>
+    </section>
+    <section id="container">
+        <section id="img13" class="bookImg"></section>
+    </section>
+    <section id="container">
+        <section id="img14" class="bookImg"></section>
+    </section>
+    <section id="container">
+        <section id="img15" class="bookImg"></section>
+    </section>
+</section>
 
 <!-- Trigger the Modal -->
 <!-- <img id="myImg" alt="bookCover" style="width:100%;max-width:300px"> -->
@@ -159,10 +176,10 @@
 
                 // Check Branch Response
                 $("#records").append(
-                	$('<section class="record">').append(
-                		$("<h2>").text(branchCode),
-                		$("<h3>").text(branchheading)
-                	)
+                    $('<section class="record">').append(
+                        $("<h2>").text(branchCode),
+                        $("<h3>").text(branchheading)
+                    )
                 );
             }
         });
@@ -291,6 +308,17 @@
         background-size: cover;
         -o-background-size: cover; */
     }
+
+    img {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+    }
+
+    img:hover {
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    }
+
 
     /* Style the Image Used to Trigger the Modal */
     #myImg {

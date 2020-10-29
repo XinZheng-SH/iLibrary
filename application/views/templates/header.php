@@ -4,7 +4,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>iLibrary</title>
-	
+
 	<!-- Main JS Files -->
 	<script src="<?php echo base_url('assets/js/jquery-3.5.1.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/main.js') ?>" type="module"></script>
@@ -52,9 +52,9 @@
 			<!-- <a href="<?php echo base_url('Books/view') ?>">
 				<button type="button" class="btn btn-outline-warning ">Book</button>
 			</a> -->
-<!--			Login Portal-->
+			<!--			Login Portal-->
 			<a href="<?php echo base_url('Login/SignIn') ?>">
-				<button type="button" class="btn btn-outline-warning " >Login</button>
+				<button type="button" class="btn btn-outline-warning ">Login</button>
 			</a>
 			<a href="<?php echo base_url('Books/bookList') ?>">
 				<button type="button" class="btn btn-outline-warning ">My Favorite Books</button>
