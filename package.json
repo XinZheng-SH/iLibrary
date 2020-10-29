@@ -1,7 +1,0 @@
-{
-  "name": "iLibraryGit",
-  "version": "1.0.0",
-  "dependencies": {
-    "ol": "^6.4.3"
-  }
-}

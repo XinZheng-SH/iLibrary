@@ -4,7 +4,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>iLibrary</title>
-	
+
 	<!-- Main JS Files -->
 	<script src="<?php echo base_url('assets/js/jquery-3.5.1.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/main.js') ?>" type="module"></script>
@@ -52,14 +52,43 @@
 			<!-- <a href="<?php echo base_url('Books/view') ?>">
 				<button type="button" class="btn btn-outline-warning ">Book</button>
 			</a> -->
-<!--			Login Portal-->
-			<a href="<?php echo base_url('Login/SignIn') ?>">
-				<button type="button" class="btn btn-outline-warning " >Login</button>
-			</a>
-			<a href="<?php echo base_url('Books/bookList') ?>">
+			<!--			Login Portal-->
+			<div id="user-info" style="margin-left: 10em;">
+				<p style="font-family:'Arial Black' ">Good day.
+					<?php echo $username ?></p>
+			</div>
+			<a href="<?php echo base_url(''); ?>Books/bookList">
 				<button type="button" class="btn btn-outline-warning ">My Favorite Books</button>
 			</a>
+			<a href="<?php echo base_url('Login/logout') ?>">
+				<button type="button" class="btn btn-outline-warning ">Log out</button>
+			</a>
 		</nav>
+
+		<!--	<nav class="navbar navbar-expand-lg navbar-light bg-light"-->
+		<!--		 style="justify-content: center;height: 80px; background-color: rgba(0,0,0,0.1); z-index: 999999;" ;>-->
+		<!--		<a class="navbar-brand" href="#">Navbar</a>-->
+		<!--		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"-->
+		<!--				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+		<!--			<span class="navbar-toggler-icon"></span>-->
+		<!--		</button>-->
+		<!--		<div class="collapse navbar-collapse" id="navbarNav">-->
+		<!--			<ul class="navbar-nav">-->
+		<!--				<li class="nav-item active">-->
+		<!--					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+		<!--				</li>-->
+		<!--				<li class="nav-item">-->
+		<!--					<a class="nav-link" href="#">Features</a>-->
+		<!--				</li>-->
+		<!--				<li class="nav-item">-->
+		<!--					<a class="nav-link" href="#">Pricing</a>-->
+		<!--				</li>-->
+		<!--				<li class="nav-item">-->
+		<!--					<a class="nav-link disabled" href="#">Disabled</a>-->
+		<!--				</li>-->
+		<!--			</ul>-->
+		<!--		</div>-->
+		<!--	</nav>-->
 
 	</header>
 

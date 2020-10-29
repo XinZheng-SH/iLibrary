@@ -17,8 +17,12 @@ class Pages extends CI_Controller{
 
 //		$this->load->helper('dd');
 //		echo dd('123');
-
-		$this->load->view('templates/header');
+		if ($this->session->userdata('logged_in')) {
+			$data['username'] = $this->session->userdata('username');
+			$this->load->view('templates/logged_header', $data);
+		} else {
+			$this->load->view('templates/header');
+		}
 
 //		$data['results'] = $this->Page_model->readComment();
 
